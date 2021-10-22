@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">METAR_TAF</string>
+    <string name="search_hint">ICAO code</string>
 </resources>
