@@ -30,10 +30,6 @@ public class SearchActivity extends AppCompatActivity {
         list_search = (ListView) findViewById(R.id.list_search);
 
         searchList = new ArrayList<String>();
-        
-
-
-
     }
 }
 
