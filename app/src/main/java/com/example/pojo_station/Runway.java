@@ -5,8 +5,10 @@ package com.example.pojo_station;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 
-public class Runway {
+
+public class Runway implements Serializable {
 
     @SerializedName("length_ft")
     @Expose
