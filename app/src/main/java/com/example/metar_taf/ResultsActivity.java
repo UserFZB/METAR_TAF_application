@@ -1,8 +1,12 @@
 package com.example.metar_taf;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import com.example.pojo_station.Station;
@@ -58,7 +62,7 @@ public class ResultsActivity extends AppCompatActivity {
             Marker startMarker = new Marker(myOpenMapView);
             startMarker.setPosition(startPoint);
             startMarker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
-            startMarker.setIcon(getResources().getDrawable(R.drawable.osm_ic_ic_map_ortho));
+            startMarker.setIcon(getResources().getDrawable(R.drawable.localisation));
             startMarker.setTitle("Start point");
             myOpenMapView.getOverlays().add(startMarker);
         }
