@@ -3,6 +3,7 @@ package com.example.metar_taf;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,6 +13,8 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 public class SearchActivity extends AppCompatActivity {
+
+    private static final String TAG = "SearchActivity";
 
     EditText text_search;
     ImageButton btn_add;
@@ -30,6 +33,13 @@ public class SearchActivity extends AppCompatActivity {
         list_search = (ListView) findViewById(R.id.list_search);
 
         searchList = new ArrayList<String>();
+
+        btn_add.setOnClickListener( view -> {
+           String to_add = String.valueOf(text_search.getText());
+           searchList.add(to_add);
+           Log.d(TAG, searchList.toString());
+           text_search.getText().clear();
+        });
     }
 }
 
