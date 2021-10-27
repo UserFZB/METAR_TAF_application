@@ -34,9 +34,13 @@ public class SearchActivity extends AppCompatActivity {
 
         searchList = new ArrayList<String>();
 
+        adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, searchList);
+        list_search.setAdapter(adapter);
+
         btn_add.setOnClickListener( view -> {
            String to_add = String.valueOf(text_search.getText());
            searchList.add(to_add);
+           adapter.notifyDataSetChanged();
            Log.d(TAG, searchList.toString());
            text_search.getText().clear();
         });
