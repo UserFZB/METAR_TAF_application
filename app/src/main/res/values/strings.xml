@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">METAR_TAF</string>
     <string name="search_hint">ICAO code</string>
+    <string name="title_activity_airport">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>
