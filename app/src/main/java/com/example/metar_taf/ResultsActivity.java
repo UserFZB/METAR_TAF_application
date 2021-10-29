@@ -90,10 +90,11 @@ public class ResultsActivity extends AppCompatActivity {
                             getApplicationContext(),
                             startMarker.getTitle(),
                             Toast.LENGTH_LONG).show();
-                    /*Intent intent = new Intent(ResultsActivity.this, Airport.class);
-                    intent.putExtra("OACI",startMarker.getTitle());
+                    Intent intent = new Intent(ResultsActivity.this, AirportActivity.class);
+                    intent.putExtra("POSITION",researchedAirports.indexOf(pos));
+                    intent.putExtra("AIRPORT_LIST", researchedAirports);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    ContextCompat.startActivity(getApplicationContext(), intent, Bundle.EMPTY);*/
+                    ContextCompat.startActivity(getApplicationContext(), intent, Bundle.EMPTY);
 
                     return false;
                 }
