@@ -9,6 +9,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 
 import com.example.pojo_station.Station;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -24,8 +26,11 @@ public class MapsFragment extends Fragment {
     private static final String KEY_POSITION = "position";
     private static final String KEY_OACI = "oaci";;
 
+    Switch switch_map;
     int position;
     Station station;
+
+    GoogleMap map;
 
     boolean ready = false;
 
@@ -34,16 +39,31 @@ public class MapsFragment extends Fragment {
         public void onMapReady(GoogleMap googleMap) {
             if (station != null){
                 LatLng airport= new LatLng(station.getLatitude(), station.getLongitude());
-                googleMap.addMarker(new MarkerOptions().position(airport).title(station.getName()));
-                //googleMap.moveCamera(CameraUpdateFactory.newLatLng(airport));
-                googleMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
-                CameraPosition cameraPosition = new CameraPosition.Builder()
-                        .target(airport)      // Sets the center of the map to Mountain View
-                        .zoom(12)                   // Sets the zoom
-                        .bearing(0)                // Sets the orientation of the camera to east
-                        .tilt(0)                   // Sets the tilt of the camera to 30 degrees
-                        .build();                   // Creates a CameraPosition from the builder
-                googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+                if (googleMap != null){
+                    map = googleMap;
+                    map.addMarker(new MarkerOptions().position(airport).title(station.getName()));
+                    //googleMap.moveCamera(CameraUpdateFactory.newLatLng(airport));
+                    map.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+                    CameraPosition cameraPosition = new CameraPosition.Builder()
+                            .target(airport)      // Sets the center of the map to Mountain View
+                            .zoom(12)                   // Sets the zoom
+                            .bearing(0)                // Sets the orientation of the camera to east
+                            .tilt(0)                   // Sets the tilt of the camera to 30 degrees
+                            .build();                   // Creates a CameraPosition from the builder
+                    map.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+                }else{
+                    googleMap.addMarker(new MarkerOptions().position(airport).title(station.getName()));
+                    //googleMap.moveCamera(CameraUpdateFactory.newLatLng(airport));
+                    googleMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+                    CameraPosition cameraPosition = new CameraPosition.Builder()
+                            .target(airport)      // Sets the center of the map to Mountain View
+                            .zoom(12)                   // Sets the zoom
+                            .bearing(0)                // Sets the orientation of the camera to east
+                            .tilt(0)                   // Sets the tilt of the camera to 30 degrees
+                            .build();                   // Creates a CameraPosition from the builder
+                    googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+                }
+
             }
         }
     };
@@ -68,6 +88,39 @@ public class MapsFragment extends Fragment {
             position = getArguments().getInt(KEY_POSITION, -1);
             station = (Station) getArguments().getSerializable(KEY_OACI);
         }
+
+        switch_map = result.findViewById(R.id.switch1);
+        switch_map.setChecked(false);
+        switch_map.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked == true){
+                    LatLng airport= new LatLng(station.getLatitude(), station.getLongitude());
+                    map.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
+                    map.setBuildingsEnabled (true);
+                    CameraPosition cameraPosition = new CameraPosition.Builder()
+                            .target(airport)      // Sets the center of the map to Mountain View
+                            .zoom(12)                   // Sets the zoom
+                            .bearing(0)                // Sets the orientation of the camera to east
+                            .tilt(45)                   // Sets the tilt of the camera to 30 degrees
+                            .build();                   // Creates a CameraPosition from the builder
+                    map.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+                }else{
+                    LatLng airport= new LatLng(station.getLatitude(), station.getLongitude());
+                    map.addMarker(new MarkerOptions().position(airport).title(station.getName()));
+                    map.setBuildingsEnabled (false);
+                    map.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+                    CameraPosition cameraPosition = new CameraPosition.Builder()
+                            .target(airport)      // Sets the center of the map to Mountain View
+                            .zoom(12)                   // Sets the zoom
+                            .bearing(0)                // Sets the orientation of the camera to east
+                            .tilt(0)                   // Sets the tilt of the camera to 30 degrees
+                            .build();                   // Creates a CameraPosition from the builder
+                    map.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+                }
+            }
+        });
 
         Log.e(getClass().getSimpleName(), "onCreateView called for fragment number " + position);
 
