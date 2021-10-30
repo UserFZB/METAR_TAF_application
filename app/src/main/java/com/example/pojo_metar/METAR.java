@@ -4,9 +4,10 @@ package com.example.pojo_metar;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class METAR {
+public class METAR implements Serializable {
 
     @SerializedName("meta")
     @Expose

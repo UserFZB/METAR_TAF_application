@@ -4,44 +4,42 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.TextView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link MeteoFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import com.example.pojo_metar.METAR;
+import com.example.pojo_station.Station;
+import com.example.pojo_taf.Taf;
+
 public class MeteoFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private static final String TAG = "MeteoFragment";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private static final String KEY_POSITION = "position";
+    private static final String KEY_OACI = "oaci";
+    private static final String KEY_METAR = "metar";
+    private static final String KEY_TAF = "taf";
+
+    int position;
+    Station station;
+    METAR metar = null;
+    Taf taf = null;
 
     public MeteoFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment MeteoFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static MeteoFragment newInstance(String param1, String param2) {
+    public static MeteoFragment newInstance(int position, Station oaci, METAR metar, Taf taf) {
         MeteoFragment fragment = new MeteoFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putInt(KEY_POSITION, position);
+        args.putSerializable(KEY_OACI, oaci);
+        args.putSerializable(KEY_METAR, metar);
+        args.putSerializable(KEY_TAF, taf);
         fragment.setArguments(args);
         return fragment;
     }
@@ -49,16 +47,32 @@ public class MeteoFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_meteo, container, false);
+        View result = inflater.inflate(R.layout.fragment_meteo, container, false);
+
+        if (getArguments() != null) {
+            position = getArguments().getInt(KEY_POSITION, -1);
+            station = (Station) getArguments().getSerializable(KEY_OACI);
+            metar = (METAR) getArguments().getSerializable(KEY_METAR);
+            taf = (Taf) getArguments().getSerializable(KEY_TAF);
+        }
+
+        Log.d(TAG, station.toString());
+
+        FrameLayout rootView = (FrameLayout) result.findViewById(R.id.frame);
+
+        TextView metar_txt = result.findViewById(R.id.metar_coded);
+        TextView taf_txt = result.findViewById(R.id.taf_coded);
+
+        metar_txt.setText(metar.getMeta().toString());
+        taf_txt.setText(taf.getMeta().toString());
+
+        Log.e(getClass().getSimpleName(), "onCreateView called for fragment number " + position);
+
+        return result;
     }
 }

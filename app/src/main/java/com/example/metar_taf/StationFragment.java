@@ -4,44 +4,32 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.TextView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link StationFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import com.example.pojo_station.Station;
+
 public class StationFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private static final String KEY_POSITION = "position";
+    private static final String KEY_OACI = "oaci";;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    int position;
+    Station station;
 
     public StationFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment StationFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static StationFragment newInstance(String param1, String param2) {
+    public static StationFragment newInstance(int position, Station oaci) {
         StationFragment fragment = new StationFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putInt(KEY_POSITION, position);
+        args.putSerializable(KEY_OACI, oaci);
         fragment.setArguments(args);
         return fragment;
     }
@@ -49,16 +37,31 @@ public class StationFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_station, container, false);
+        View result = inflater.inflate(R.layout.fragment_station, container, false);
+
+        if (getArguments() != null) {
+            position = getArguments().getInt(KEY_POSITION, -1);
+            station = (Station) getArguments().getSerializable(KEY_OACI);
+        }
+
+        Log.d("STATION_TR",station.toString());
+
+        FrameLayout rootView = (FrameLayout) result.findViewById(R.id.frame);
+
+        TextView name = result.findViewById(R.id.airport_name);
+        TextView wiki = result.findViewById(R.id.airport_wiki);
+
+        name.setText(station.getName());
+        wiki.setText(station.getWiki());
+
+        Log.e(getClass().getSimpleName(), "onCreateView called for fragment number " + position);
+
+        return result;
+
     }
 }
