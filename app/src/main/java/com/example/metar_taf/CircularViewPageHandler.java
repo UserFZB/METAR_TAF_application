@@ -2,14 +2,18 @@ package com.example.metar_taf;
 
 import androidx.viewpager.widget.ViewPager;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 public class CircularViewPageHandler implements ViewPager.OnPageChangeListener {
 
     private ViewPager mViewPager;
     private int         mCurrentPosition;
     private int         mScrollState;
+    BottomNavigationView bottomNav;
 
-    public CircularViewPageHandler(final ViewPager viewPager) {
+    public CircularViewPageHandler(final ViewPager viewPager, BottomNavigationView bottom) {
         mViewPager = viewPager;
+        bottomNav = bottom;
     }
 
     @Override
@@ -50,5 +54,6 @@ public class CircularViewPageHandler implements ViewPager.OnPageChangeListener {
 
     @Override
     public void onPageScrolled(final int position, final float positionOffset, final int positionOffsetPixels) {
+        bottomNav.setSelectedItemId(R.id.nav_station);
     }
 }

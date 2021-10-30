@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_station"
+
+        android:icon="@android:drawable/ic_dialog_email"
+        android:title="Station" />
+
+    <item
+        android:id="@+id/nav_meteo"
+
+        android:icon="@android:drawable/ic_dialog_info"
+        android:title="Meteo" />
+
+    <item
+        android:id="@+id/nav_map"
+
+        android:icon="@android:drawable/ic_dialog_map"
+        android:title="Map" />
+
+</menu>

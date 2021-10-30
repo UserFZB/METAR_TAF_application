@@ -9,6 +9,7 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.pojo_station.Station;
 
@@ -41,16 +42,37 @@ public class BlankFragment extends Fragment {
         View result = inflater.inflate(R.layout.fragment_blank, container, false);
 
         FrameLayout rootView = (FrameLayout) result.findViewById(R.id.frame);
-        TextView name = (TextView) result.findViewById(R.id.fragment_page_title);
-        TextView pos = (TextView) result.findViewById(R.id.fragment_page_pos);
         int position = getArguments().getInt(KEY_POSITION, -1);
         Station station = (Station) getArguments().getSerializable(KEY_OACI);
-
-        pos.setText("Page numéro " + position);
-        name.setText(station.getName());
 
         Log.e(getClass().getSimpleName(), "onCreateView called for fragment number " + position);
 
         return result;
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        //affichage child fragment par défaut à la création
+        Fragment childFragment = new StationFragment();
+        FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container_view, childFragment).commit();
+    }
+
+    public void switchToFragmentMaps() {
+        FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container_view, new MapsFragment()).commit();
+        Log.d("FRAG : ","change to random");
+    }
+
+    public void switchToFragmentMeteo() {
+        FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container_view, new MeteoFragment()).commit();
+        Log.d("FRAG : ","change to meteo");
+    }
+
+    public void switchToFragmentstation() {
+        FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container_view, new StationFragment()).commit();
+        Log.d("FRAG : ","change to station");
     }
 }

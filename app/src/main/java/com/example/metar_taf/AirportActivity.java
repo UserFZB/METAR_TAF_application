@@ -2,11 +2,14 @@ package com.example.metar_taf;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.pojo_station.Station;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
@@ -14,12 +17,19 @@ import java.util.ArrayList;
 public class AirportActivity extends AppCompatActivity {
 
     ArrayList<Station> researchedAirports;
-    //Station station;
-    int pos;
+    int position;
+    BlankFragment fragment;
+    ViewPager pager;
+    Station current;
+    BottomNavigationView bottomNav;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_airport);
+
+        bottomNav = findViewById(R.id.nav_view);
+        bottomNav.setOnNavigationItemSelectedListener(navListener);
 
         Intent intent = getIntent();
         researchedAirports = new ArrayList<>();
@@ -27,27 +37,42 @@ public class AirportActivity extends AppCompatActivity {
             if (intent.hasExtra("AIRPORT_LIST")) {
                 researchedAirports = (ArrayList<Station>) intent.getSerializableExtra("AIRPORT_LIST");
             }
-            /*if (intent.hasExtra("OACI")) {
-                station = (Station) intent.getSerializableExtra("OACI");
-            }*/
             if (intent.hasExtra("POSITION")) {
-                pos = intent.getIntExtra("POSITION",1 );
+                position = intent.getIntExtra("POSITION",1 );
+            }
+            if (intent.hasExtra("STATION")) {
+                current = (Station) intent.getSerializableExtra("STATION");
             }
         }
-
         this.configureViewPager();
     }
 
     private void configureViewPager(){
-        // 1 - Get ViewPager from layout
-        ViewPager pager = (ViewPager)findViewById(R.id.activity_main_viewpager);
-        // 2 - Set Adapter PageAdapter and glue it together
-        pager.setAdapter(new PageAdapter(getSupportFragmentManager(), researchedAirports) {
-        });
-        pager.setCurrentItem(pos);
-        pager.setOnPageChangeListener(new CircularViewPageHandler(pager));
+        pager = (ViewPager)findViewById(R.id.activity_main_viewpager);
+        pager.setAdapter(new PageAdapter(getSupportFragmentManager(), researchedAirports) {});
+        pager.setCurrentItem(position);
+
         TabLayout tabLayout = findViewById(R.id.tabLayout);
         tabLayout.setupWithViewPager(pager, true);
+        pager.addOnPageChangeListener(new CircularViewPageHandler(pager,bottomNav));
     }
 
+    private final BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            fragment = (BlankFragment) pager.getAdapter().instantiateItem(pager, pager.getCurrentItem());
+            switch (item.getItemId()) {
+                case R.id.nav_map:
+                    fragment.switchToFragmentMaps();
+                    break;
+                case R.id.nav_meteo:
+                    fragment.switchToFragmentMeteo();
+                    break;
+                case R.id.nav_station:
+                    fragment.switchToFragmentstation();
+                    break;
+            }
+            return true;
+        }
+    };
 }
