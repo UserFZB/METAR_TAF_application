@@ -2,6 +2,7 @@ package com.example.metar_taf;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.content.ContextCompat;
 
 import android.content.DialogInterface;
@@ -47,6 +48,7 @@ public class SearchActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
         text_search = (EditText) findViewById(R.id.text_search);
         btn_add = (ImageButton) findViewById(R.id.btn_add);
@@ -55,7 +57,7 @@ public class SearchActivity extends AppCompatActivity {
         searchList = new ArrayList<String>();
         sendList = new ArrayList<Station>();
 
-        adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, searchList);
+        adapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.list_items, searchList);
         list_search.setAdapter(adapter);
 
         list_search.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -115,6 +117,7 @@ public class SearchActivity extends AppCompatActivity {
                            sendList.add(station);
                            Log.d(TAG, "response  en json =" + station.toString());
                            searchList.add(to_add);
+                           list_search.setVisibility(View.VISIBLE);
                            Log.d(TAG, searchList.toString());
                        }
                    }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,59 +7,60 @@
     android:background="@mipmap/background"
     tools:context=".SearchActivity">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center_horizontal">
 
-        <EditText
-            android:id="@+id/text_search"
-            android:layout_width="300dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="250dp"
-            android:gravity="center_vertical"
-            android:background="@drawable/rounded_corner">
-        </EditText>
+    <EditText
+        android:id="@+id/text_search"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="250dp"
+        android:textColor="@color/lapis_lazuli"
+        android:paddingLeft="5dp"
+        android:background="@drawable/rounded_corner"></EditText>
 
-        <ImageButton
-            android:id="@+id/btn_add"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/text_search"
-            android:layout_alignRight="@+id/text_search"
-            android:layout_alignBottom="@+id/text_search"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            android:background="@color/white"
-            android:padding="2dp"
-            android:src="@mipmap/plus"></ImageButton>
+    <ImageButton
+        android:id="@+id/btn_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/text_search"
+        android:layout_alignRight="@+id/text_search"
+        android:layout_alignBottom="@+id/text_search"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/white"
+        android:padding="2dp"
+        android:src="@mipmap/plus"></ImageButton>
 
-        <ListView
-            android:id="@+id/list_search"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/text_search"
-            android:gravity="right"
-            android:layout_marginTop="60dp"
-            android:layout_below="@+id/text_search"
-            android:background="#DBE7EE"
-            >
+    <ListView
+        android:id="@+id/list_search"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_search"
+        android:layout_alignTop="@+id/text_search"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="60dp"
+        android:divider="@color/alice_blue"
+        android:dividerHeight="10dp"
+        android:background="#DBE7EE"
+        android:gravity="center">
+    </ListView>
 
-        </ListView>
-
-        <Button
-            android:id="@+id/submit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Submit" />
-
-
-    </RelativeLayout>
-
-
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/list_search"
+        android:layout_marginTop="60dp"
+        android:layout_centerInParent="true"
+        android:background="@color/lapis_lazuli"
+        android:textColor="@color/alice_blue"
+        android:textSize="17dp"
+        android:text="Submit" />
 
 
-</LinearLayout>
+
+
+
+</RelativeLayout>
