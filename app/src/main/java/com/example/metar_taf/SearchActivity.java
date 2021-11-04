@@ -57,7 +57,7 @@ public class SearchActivity extends AppCompatActivity {
         searchList = new ArrayList<String>();
         sendList = new ArrayList<Station>();
 
-        adapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.list_items, searchList);
+        adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, searchList);
         list_search.setAdapter(adapter);
 
         list_search.setOnItemClickListener(new AdapterView.OnItemClickListener() {
