@@ -117,7 +117,6 @@ public class SearchActivity extends AppCompatActivity {
                            sendList.add(station);
                            Log.d(TAG, "response  en json =" + station.toString());
                            searchList.add(to_add);
-                           list_search.setVisibility(View.VISIBLE);
                            Log.d(TAG, searchList.toString());
                        }
                    }
