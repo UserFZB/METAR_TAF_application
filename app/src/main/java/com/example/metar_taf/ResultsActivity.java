@@ -47,6 +47,8 @@ public class ResultsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         Configuration.getInstance().setUserAgentValue(BuildConfig.APPLICATION_ID);
 
         Intent intent = getIntent();

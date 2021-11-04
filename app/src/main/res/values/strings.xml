@@ -1,12 +1,11 @@
 <resources>
-    <string name="app_name">METAR_TAF</string>
+    <string name="app_name">Airport Meteo</string>
     <string name="search_hint">ICAO code</string>
     <string name="title_activity_airport">AirportActivity</string>
     <string name="title_home">Home</string>
     <string name="nav_station">Airport</string>
     <string name="nav_meteo">Weather</string>
     <string name="nav_map">Map</string>
-    <string name="hint_search">Airport ICAO</string>
     <string name="button_search">Submit</string>
     <string name="delete">Delete ?</string>
     <string name="confirm_delete">Are you sure you want to delete this airport ?</string>
@@ -15,5 +14,4 @@
     <string name="write">Please enter an ICAO airport code to add it</string>
     <string name="code_not_valid">Please enter a valid ICAO code</string>
     <string name="no_airport">Unexisting airport</string>
-
 </resources>
