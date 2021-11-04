@@ -3,20 +3,17 @@
 
     <item
         android:id="@+id/nav_station"
-
-        android:icon="@android:drawable/ic_dialog_email"
-        android:title="Station" />
+        android:icon="@drawable/info"
+        android:title="@string/nav_station" />
 
     <item
         android:id="@+id/nav_meteo"
-
-        android:icon="@android:drawable/ic_dialog_info"
-        android:title="Meteo" />
+        android:icon="@drawable/cloud"
+        android:title="@string/nav_meteo" />
 
     <item
         android:id="@+id/nav_map"
-
-        android:icon="@android:drawable/ic_dialog_map"
-        android:title="Map" />
+        android:icon="@drawable/place"
+        android:title="@string/nav_map" />
 
 </menu>

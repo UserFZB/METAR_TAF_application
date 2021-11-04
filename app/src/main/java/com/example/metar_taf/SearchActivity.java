@@ -63,70 +63,72 @@ public class SearchActivity extends AppCompatActivity {
         list_search.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                AlertDialog.Builder adb=new AlertDialog.Builder(SearchActivity.this);
-                adb.setTitle("Delete?");
-                adb.setMessage("Are you sure you want to delete this airport ?");
+                AlertDialog.Builder adb = new AlertDialog.Builder(SearchActivity.this);
+                adb.setTitle(getApplicationContext().getString(R.string.delete));
+                adb.setMessage(getApplicationContext().getString(R.string.confirm_delete));
                 final int positionToRemove = position;
-                adb.setNegativeButton("Cancel", null);
-                adb.setPositiveButton("Ok", new AlertDialog.OnClickListener() {
+                adb.setNegativeButton(getApplicationContext().getString(R.string.cancel), null);
+                adb.setPositiveButton(getApplicationContext().getString(R.string.confirm), new AlertDialog.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         searchList.remove(positionToRemove);
                         adapter.notifyDataSetChanged();
-                    }});
+                    }
+                });
                 adb.show();
             }
         });
 
-        btn_add.setOnClickListener( view -> {
-           if (text_search.getText().toString().equals("")){
-               Toast.makeText(
-                       getApplicationContext(),
-                       "Veuillez inscrire le code OACI d'un aéroport pour l'ajouter",
-                       Toast.LENGTH_LONG).show();
-           } else if (text_search.getText().toString().length()>4){
-               Toast.makeText(
-                       getApplicationContext(),
-                       "Veuillez inscrire un code OACI valide",
-                       Toast.LENGTH_LONG).show();
-           } else {
-               String to_add = String.valueOf(text_search.getText());
-               text_search.getText().clear();
-               new API_service().searchSTATION(to_add, new Callback() {
-                   @Override
-                   public void onFailure(@NotNull Call call, @NotNull IOException e) {
-                       Toast.makeText(
-                               getApplicationContext(),
-                               "Aéroport non existant",
-                               Toast.LENGTH_LONG).show();
-                   }
-                   @Override
-                   public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-                       final Gson gson = new Gson();
-                       Log.d(TAG, "response from service = " + response);
-                       if (response.code()!=200){
-                           Looper.prepare();
-                           Toast.makeText(
-                                   getApplicationContext(),
-                                   "Aéroport non existant",
-                                   Toast.LENGTH_LONG).show();
-                           Looper.loop();
-                       }else{
-                           ResponseBody body = response.body();
-                           String value = body.string();
-                           Station station = gson.fromJson(value, Station.class);
-                           sendList.add(station);
-                           Log.d(TAG, "response  en json =" + station.toString());
-                           searchList.add(to_add);
-                           Log.d(TAG, searchList.toString());
-                       }
-                   }
-               });
-               adapter.notifyDataSetChanged();
-           }
+        btn_add.setOnClickListener(view -> {
+            if (text_search.getText().toString().equals("")) {
+                Toast.makeText(
+                        getApplicationContext(),
+                        getApplicationContext().getString(R.string.write),
+                        Toast.LENGTH_LONG).show();
+            } else if (text_search.getText().toString().length() > 4) {
+                Toast.makeText(
+                        getApplicationContext(),
+                        getApplicationContext().getString(R.string.code_not_valid),
+                        Toast.LENGTH_LONG).show();
+            } else {
+                String to_add = String.valueOf(text_search.getText());
+                text_search.getText().clear();
+                new API_service().searchSTATION(to_add, new Callback() {
+                    @Override
+                    public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                        Toast.makeText(
+                                getApplicationContext(),
+                                getApplicationContext().getString(R.string.no_airport),
+                                Toast.LENGTH_LONG).show();
+                    }
+
+                    @Override
+                    public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                        final Gson gson = new Gson();
+                        Log.d(TAG, "response from service = " + response);
+                        if (response.code() != 200) {
+                            Looper.prepare();
+                            Toast.makeText(
+                                    getApplicationContext(),
+                                    getApplicationContext().getString(R.string.no_airport),
+                                    Toast.LENGTH_LONG).show();
+                            Looper.loop();
+                        } else {
+                            ResponseBody body = response.body();
+                            String value = body.string();
+                            Station station = gson.fromJson(value, Station.class);
+                            sendList.add(station);
+                            Log.d(TAG, "response  en json =" + station.toString());
+                            searchList.add(to_add);
+                            Log.d(TAG, searchList.toString());
+                        }
+                    }
+                });
+                adapter.notifyDataSetChanged();
+            }
         });
 
         Button submit = findViewById(R.id.submit);
-        submit.setOnClickListener( view -> {
+        submit.setOnClickListener(view -> {
             Intent intent = new Intent(SearchActivity.this, ResultsActivity.class);
             intent.putExtra("AIRPORT_LIST", sendList);
             ContextCompat.startActivity(view.getContext(), intent, Bundle.EMPTY);
