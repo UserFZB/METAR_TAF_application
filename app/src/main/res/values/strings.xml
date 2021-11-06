@@ -14,4 +14,6 @@
     <string name="write">Please enter an ICAO airport code to add it</string>
     <string name="code_not_valid">Please enter a valid ICAO code</string>
     <string name="no_airport">Unexisting airport</string>
+    <string name="error_request">No response from API</string>
+    <string name="already">This airport is already in the list</string>
 </resources>

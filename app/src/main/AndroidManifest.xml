@@ -34,9 +34,9 @@
             android:resource="@xml/tab_selector" />
 
         <activity android:name=".AirportActivity" android:parentActivityName=".ResultsActivity" />
-        <activity android:name=".ResultsActivity" android:parentActivityName=".SearchActivity" android:launchMode="singleTask"/>
+        <activity android:name=".ResultsActivity" android:parentActivityName=".SearchActivity" android:launchMode="singleTop"/>
         <activity android:name=".MainActivity"></activity>
-        <activity android:name=".SearchActivity" android:windowSoftInputMode="stateVisible|adjustPan" >
+        <activity android:name=".SearchActivity" android:windowSoftInputMode="stateVisible|adjustPan" android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

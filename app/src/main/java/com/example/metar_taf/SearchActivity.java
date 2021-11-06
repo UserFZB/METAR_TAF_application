@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.content.ContextCompat;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Looper;
 import android.util.Log;
@@ -42,7 +44,7 @@ public class SearchActivity extends AppCompatActivity {
     ArrayList<String> searchList;
     ArrayList<Station> sendList;
     ArrayAdapter<String> adapter;
-
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +73,7 @@ public class SearchActivity extends AppCompatActivity {
                 adb.setPositiveButton(getApplicationContext().getString(R.string.confirm), new AlertDialog.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         searchList.remove(positionToRemove);
+                        sendList.remove(positionToRemove);
                         adapter.notifyDataSetChanged();
                     }
                 });
@@ -91,40 +94,17 @@ public class SearchActivity extends AppCompatActivity {
                         Toast.LENGTH_LONG).show();
             } else {
                 String to_add = String.valueOf(text_search.getText());
+                if (searchList.contains(to_add)) {
+                    Toast.makeText(
+                            getApplicationContext(),
+                            getApplicationContext().getString(R.string.already),
+                            Toast.LENGTH_LONG).show();
+                } else {
+                    text_search.getText().clear();
+                    MyAsyncTasks myAsyncTasks = new MyAsyncTasks();
+                    myAsyncTasks.execute(to_add);
+                }
                 text_search.getText().clear();
-                new API_service().searchSTATION(to_add, new Callback() {
-                    @Override
-                    public void onFailure(@NotNull Call call, @NotNull IOException e) {
-                        Looper.prepare();
-                        Toast.makeText(
-                                getApplicationContext(),
-                                getApplicationContext().getString(R.string.no_airport),
-                                Toast.LENGTH_LONG).show();
-                        Looper.loop();
-                    }
-
-                    @Override
-                    public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-                        final Gson gson = new Gson();
-                        Log.d(TAG, "response from service = " + response);
-                        if (response.code() != 200) {
-                            Looper.prepare();
-                            Toast.makeText(
-                                    getApplicationContext(),
-                                    getApplicationContext().getString(R.string.no_airport),
-                                    Toast.LENGTH_LONG).show();
-                            Looper.loop();
-                        } else {
-                            ResponseBody body = response.body();
-                            String value = body.string();
-                            Station station = gson.fromJson(value, Station.class);
-                            sendList.add(station);
-                            Log.d(TAG, "response  en json =" + station.toString());
-                            searchList.add(to_add);
-                            Log.d(TAG, searchList.toString());
-                        }
-                    }
-                });
                 adapter.notifyDataSetChanged();
             }
         });
@@ -133,8 +113,78 @@ public class SearchActivity extends AppCompatActivity {
         submit.setOnClickListener(view -> {
             Intent intent = new Intent(SearchActivity.this, ResultsActivity.class);
             intent.putExtra("AIRPORT_LIST", sendList);
+            Log.d(TAG, "liste envoyée =" + sendList.toString());
             ContextCompat.startActivity(view.getContext(), intent, Bundle.EMPTY);
         });
+    }
+
+    class MyAsyncTasks extends AsyncTask<String, String, String> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            // display a progress dialog for good user experiance
+            progressDialog = new ProgressDialog(SearchActivity.this);
+            progressDialog.setMessage("Please Wait");
+            progressDialog.setCancelable(false);
+            progressDialog.show();
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            final String[] result = new String[1];
+            new API_service().searchSTATION(params[0], new Callback() {
+                @Override
+                public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                    onPostExecute(getApplicationContext().getString(R.string.error_request));
+                    result[0] = "error";
+                }
+
+                @Override
+                public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                    final Gson gson = new Gson();
+                    Log.d(TAG, "response from service = " + response);
+                    if (response.code() != 200) {
+                        onPostExecute(getApplicationContext().getString(R.string.no_airport));
+                        result[0] = "error";
+                    } else {
+                        ResponseBody body = response.body();
+                        String value = body.string();
+                        Station station = gson.fromJson(value, Station.class);
+                        sendList.add(station);
+                        Log.d(TAG, "response  en json =" + station.toString());
+                        searchList.add(params[0]);
+                        Log.d(TAG, searchList.toString());
+                        result[0] = "reussi";
+                        onPostExecute("done");
+                    }
+                }
+            });
+            return result[0];
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    if (s==getApplicationContext().getString(R.string.no_airport)){
+                        Toast.makeText(
+                                getApplicationContext(),
+                                getApplicationContext().getString(R.string.no_airport),
+                                Toast.LENGTH_LONG).show();
+                    }else if(s==getApplicationContext().getString(R.string.error_request)){
+                        Toast.makeText(
+                                getApplicationContext(),
+                                getApplicationContext().getString(R.string.error_request),
+                                Toast.LENGTH_LONG).show();
+                    }else{
+                        adapter.notifyDataSetChanged();
+                    }
+                }
+            });
+            progressDialog.dismiss();
+        }
     }
 }
 

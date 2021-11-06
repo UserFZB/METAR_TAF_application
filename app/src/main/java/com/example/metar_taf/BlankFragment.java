@@ -1,12 +1,16 @@
 package com.example.metar_taf;
 
+import android.app.ProgressDialog;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Looper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -36,6 +40,7 @@ public class BlankFragment extends Fragment {
     Station station;
     METAR metar = null;
     Taf taf = null;
+    ProgressDialog progressDialog;
 
     public BlankFragment() {
         // Required empty public constructor
@@ -50,7 +55,6 @@ public class BlankFragment extends Fragment {
         return fragment;
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -61,25 +65,34 @@ public class BlankFragment extends Fragment {
         if (getArguments() != null) {
             position = getArguments().getInt(KEY_POSITION, -1);
             station = (Station) getArguments().getSerializable(KEY_OACI);
-        };
+        }
 
         new API_service().searchMETAR(station.getIcao(), new Callback() {
             @Override
             public void onFailure(@NotNull Call call, @NotNull IOException e) {
-                Log.d(TAG, "Failure");
+
             }
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 final Gson gson = new Gson();
                 Log.d(TAG, "response from service = " + response);
+                if (response.code() != 200) {
+                    Looper.prepare();
+                    Toast.makeText(
+                            getContext(),
+                            getContext().getString(R.string.no_airport),
+                            Toast.LENGTH_LONG).show();
+                    Looper.loop();
+                } else {
+                    ResponseBody body = response.body();
+                    String value = body.string();
 
-                ResponseBody body = response.body();
-                String value = body.string();
+                    Log.d(TAG, "response body to string =" + value);
+                    metar = gson.fromJson(value, METAR.class);
 
-                Log.d(TAG, "response body to string =" + value);
-                metar = gson.fromJson(value, METAR.class);
+                    Log.d(TAG, "response  en json =" + metar.toString());
+                }
 
-                Log.d(TAG, "response  en json =" + metar.toString());
             }
         });
 
@@ -88,17 +101,27 @@ public class BlankFragment extends Fragment {
             public void onFailure(@NotNull Call call, @NotNull IOException e) {
 
             }
+
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 final Gson gson = new Gson();
                 Log.d(TAG, "response from service = " + response);
+                if (response.code() != 200) {
+                    Looper.prepare();
+                    Toast.makeText(
+                            getContext(),
+                            getContext().getString(R.string.no_airport),
+                            Toast.LENGTH_LONG).show();
+                    Looper.loop();
+                } else {
+                    ResponseBody body = response.body();
+                    String value = body.string();
 
-                ResponseBody body = response.body();
-                String value = body.string();
+                    Log.d(TAG, "response body to string =" + value);
+                    taf = gson.fromJson(value, Taf.class);
 
-                taf = gson.fromJson(value, Taf.class);
-
-                Log.d(TAG, "response  en json =" + taf.toString());
+                    Log.d(TAG, "response  en json =" + taf.toString());
+                }
             }
         });
         return result;
@@ -116,18 +139,20 @@ public class BlankFragment extends Fragment {
     public void switchToFragmentMaps() {
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container_view, MapsFragment.newInstance(position, station)).commit();
-        Log.d(TAG,"change to random");
+        Log.d(TAG, "change to random");
     }
 
     public void switchToFragmentMeteo() {
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container_view, MeteoFragment.newInstance(position, station, metar, taf)).commit();
-        Log.d(TAG,"change to meteo");
+        Log.d(TAG, "change to meteo");
     }
 
     public void switchToFragmentstation() {
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container_view, StationFragment.newInstance(position, station)).commit();
-        Log.d(TAG,"change to station");
+        Log.d(TAG, "change to station");
     }
+
+
 }

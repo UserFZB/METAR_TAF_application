@@ -67,7 +67,7 @@ public class ResultsActivity extends AppCompatActivity  {
         if (intent != null) {
             if (intent.hasExtra("AIRPORT_LIST")) {
                 researchedAirports = (ArrayList<Station>) intent.getSerializableExtra("AIRPORT_LIST");
-                Log.d(TAG, "researched airport after getting input extras  = " + researchedAirports.toString());
+                Log.d(TAG, "liste airport after getting input extras  = " + researchedAirports.toString());
             }
         }
 
