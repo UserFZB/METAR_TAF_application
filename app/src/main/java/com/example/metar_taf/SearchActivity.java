@@ -95,10 +95,12 @@ public class SearchActivity extends AppCompatActivity {
                 new API_service().searchSTATION(to_add, new Callback() {
                     @Override
                     public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                        Looper.prepare();
                         Toast.makeText(
                                 getApplicationContext(),
                                 getApplicationContext().getString(R.string.no_airport),
                                 Toast.LENGTH_LONG).show();
+                        Looper.loop();
                     }
 
                     @Override
