@@ -1,11 +1,18 @@
 package com.example.metar_taf;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
+import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.LifecycleEventObserver;
+import androidx.savedstate.SavedStateRegistry;
+import androidx.savedstate.SavedStateRegistryOwner;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -28,6 +35,7 @@ import org.osmdroid.views.overlay.mylocation.GpsMyLocationProvider;
 import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 import okhttp3.Call;
@@ -35,11 +43,13 @@ import okhttp3.Callback;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
 
-public class ResultsActivity extends AppCompatActivity {
+public class ResultsActivity extends AppCompatActivity  {
 
     private static final String TAG = "ResultsActivity";
     private MapView myOpenMapView = null;
     ArrayList<Station> researchedAirports;
+    private static String PROVIDER = "ResultsActivity";
+    private static String KEY = "Airport_List";
 
     @SuppressLint("UseCompatLoadingForDrawables")
     @Override
@@ -47,13 +57,17 @@ public class ResultsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
 
+        Log.d(TAG, "ON CREATE researched airport");
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         Configuration.getInstance().setUserAgentValue(BuildConfig.APPLICATION_ID);
 
         Intent intent = getIntent();
-        researchedAirports = new ArrayList<>();
         if (intent != null) {
             if (intent.hasExtra("AIRPORT_LIST")) {
                 researchedAirports = (ArrayList<Station>) intent.getSerializableExtra("AIRPORT_LIST");
+                Log.d(TAG, "liste airport after getting input extras  = " + researchedAirports.toString());
             }
         }
 
@@ -70,6 +84,8 @@ public class ResultsActivity extends AppCompatActivity {
         mLocationOverlay.enableMyLocation();
         myOpenMapView.setMultiTouchControls(true);
         myOpenMapView.getOverlays().add(mLocationOverlay);
+
+        Log.d(TAG, "researched airport used for display = " + researchedAirports.toString());
 
         for (Station pos : researchedAirports) {
             GeoPoint startPoint = new GeoPoint(pos.getLatitude(), pos.getLongitude());
@@ -91,7 +107,7 @@ public class ResultsActivity extends AppCompatActivity {
                             startMarker.getTitle(),
                             Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(ResultsActivity.this, AirportActivity.class);
-                    intent.putExtra("POSITION",researchedAirports.indexOf(pos));
+                    intent.putExtra("POSITION", researchedAirports.indexOf(pos));
                     intent.putExtra("AIRPORT_LIST", researchedAirports);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     ContextCompat.startActivity(getApplicationContext(), intent, Bundle.EMPTY);

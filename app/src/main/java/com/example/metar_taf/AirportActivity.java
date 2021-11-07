@@ -28,6 +28,8 @@ public class AirportActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_airport);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         bottomNav = findViewById(R.id.nav_view);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
 

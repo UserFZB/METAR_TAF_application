@@ -68,10 +68,15 @@ public class MeteoFragment extends Fragment {
         TextView metar_txt = result.findViewById(R.id.metar_coded);
         TextView taf_txt = result.findViewById(R.id.taf_coded);
 
-        metar_txt.setText(metar.getMeta().toString());
-        taf_txt.setText(taf.getMeta().toString());
+        if(metar!=null){
+            metar_txt.setText(metar.getStation());
+        }
+        if(taf!=null){
+            taf_txt.setText(taf.getMeta().toString());
+        }
 
-        Log.e(getClass().getSimpleName(), "onCreateView called for fragment number " + position);
+
+        Log.e(TAG, "onCreateView called for fragment number " + position);
 
         return result;
     }

@@ -15,6 +15,8 @@ import com.example.pojo_station.Station;
 
 public class StationFragment extends Fragment {
 
+    private static final String TAG = "StationFragment";
+
     private static final String KEY_POSITION = "position";
     private static final String KEY_OACI = "oaci";;
 
@@ -59,7 +61,7 @@ public class StationFragment extends Fragment {
         name.setText(station.getName());
         wiki.setText(station.getWiki());
 
-        Log.e(getClass().getSimpleName(), "onCreateView called for fragment number " + position);
+        Log.e(TAG, "onCreateView called for fragment number " + position);
 
         return result;
 
