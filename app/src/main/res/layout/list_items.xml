@@ -1,15 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:paddingLeft="20dp"
-    android:paddingStart="20dp"
-    android:paddingBottom="10dp"
-    android:paddingTop="10dp"
-    android:paddingRight="20dp"
-    android:paddingEnd="20dp"
-    android:layout_marginBottom="5dp"
-    android:layout_marginTop="5dp"
-    android:gravity="center"
-    />
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+id/airport_code"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingStart="20dp"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:paddingRight="20dp"
+        android:paddingEnd="20dp"
+        android:layout_marginBottom="3dp"
+        android:layout_marginTop="3dp"
+        android:textColor="@color/lapis_lazuli"
+        android:textSize="20dp"
+        android:text="TEST"
+        android:gravity="left"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/airport_code"
+        android:layout_alignTop="@+id/airport_code"
+        android:layout_alignBottom="@+id/airport_code"
+        android:layout_marginRight="10dp"
+        android:src="@mipmap/delete" />
+
+</RelativeLayout>

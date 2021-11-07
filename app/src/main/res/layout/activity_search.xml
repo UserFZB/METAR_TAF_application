@@ -12,9 +12,9 @@
         android:layout_width="300dp"
         android:layout_height="40dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="250dp"
+        android:layout_marginTop="150dp"
         android:textColor="@color/lapis_lazuli"
-        android:paddingLeft="5dp"
+        android:paddingLeft="10dp"
         android:background="@drawable/rounded_corner"></EditText>
 
     <ImageButton
@@ -32,34 +32,39 @@
         android:padding="2dp"
         android:src="@mipmap/plus"></ImageButton>
 
-    <ListView
-        android:id="@+id/list_search"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
+    <LinearLayout
+        android:id="@+id/container"
+        android:layout_width="wrap_content"
+        android:layout_height="350dp"
         android:layout_below="@+id/text_search"
         android:layout_alignTop="@+id/text_search"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="60dp"
-        android:divider="@color/alice_blue"
-        android:dividerHeight="3dp"
-        android:background="#DBE7EE"
-        android:gravity="center">
-    </ListView>
+        android:layout_centerInParent="true">
+
+        <ListView
+            android:id="@+id/list_search"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:divider="@color/alice_blue"
+            android:dividerHeight="7dp"
+            android:background="#DBE7EE"
+            android:gravity="center">
+        </ListView>
+
+    </LinearLayout>
+
 
     <Button
         android:id="@+id/submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/list_search"
-        android:layout_marginTop="60dp"
-        android:layout_centerInParent="true"
-        android:background="@color/lapis_lazuli"
+        android:layout_below="@+id/container"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/rounded_corner2"
+        android:text="Submit"
         android:textColor="@color/alice_blue"
-        android:textSize="17dp"
-        android:text="Submit" />
-
-
-
-
+        android:textSize="17dp" />
 
 </RelativeLayout>

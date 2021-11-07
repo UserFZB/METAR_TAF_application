@@ -44,6 +44,7 @@ public class SearchActivity extends AppCompatActivity {
     ArrayAdapter<String> adapter;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,8 +58,10 @@ public class SearchActivity extends AppCompatActivity {
         searchList = new ArrayList<String>();
         sendList = new ArrayList<Station>();
 
-        adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, searchList);
-        list_search.setAdapter(adapter);
+        //adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, searchList);
+        //list_search.setAdapter(adapter);
+        CustomListAdapter customAdapter = new CustomListAdapter(searchList, this);
+        list_search.setAdapter(customAdapter);
 
         list_search.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -95,10 +98,12 @@ public class SearchActivity extends AppCompatActivity {
                 new API_service().searchSTATION(to_add, new Callback() {
                     @Override
                     public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                        Looper.prepare();
                         Toast.makeText(
                                 getApplicationContext(),
                                 getApplicationContext().getString(R.string.no_airport),
                                 Toast.LENGTH_LONG).show();
+                        Looper.loop();
                     }
 
                     @Override
@@ -123,7 +128,8 @@ public class SearchActivity extends AppCompatActivity {
                         }
                     }
                 });
-                adapter.notifyDataSetChanged();
+                //adapter.notifyDataSetChanged();
+                customAdapter.notifyDataSetChanged();
             }
         });
 
