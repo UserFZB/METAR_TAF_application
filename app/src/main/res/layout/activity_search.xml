@@ -15,6 +15,7 @@
         android:layout_marginTop="150dp"
         android:textColor="@color/lapis_lazuli"
         android:paddingLeft="10dp"
+        android:hint="@string/search_hint"
         android:background="@drawable/rounded_corner"></EditText>
 
     <ImageButton

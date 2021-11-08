@@ -64,6 +64,5 @@ public class StationFragment extends Fragment {
         Log.e(TAG, "onCreateView called for fragment number " + position);
 
         return result;
-
     }
 }
