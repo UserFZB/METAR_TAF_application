@@ -15,7 +15,9 @@
         app:tabBackground="@xml/tab_selector"
         app:tabGravity="center"
         app:tabIndicatorHeight="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/nav_view"/>
+        app:layout_constraintBottom_toTopOf="@+id/nav_view"
+        android:translationZ="90dp"
+        android:background="@android:color/transparent"/>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/activity_main_viewpager"

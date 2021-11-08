@@ -55,10 +55,30 @@ public class StationFragment extends Fragment {
 
         FrameLayout rootView = (FrameLayout) result.findViewById(R.id.frame);
 
+        TextView title = result.findViewById(R.id.airport_title);
         TextView name = result.findViewById(R.id.airport_name);
+        TextView iata = result.findViewById(R.id.airport_iata);
+        TextView icao = result.findViewById(R.id.airport_icao);
+        TextView city = result.findViewById(R.id.airport_city);
+        TextView country = result.findViewById(R.id.airport_country);
+        TextView elev_ft = result.findViewById(R.id.airport_elevation_ft);
+        TextView elev_m = result.findViewById(R.id.airport_elevation_m);
+        TextView lat = result.findViewById(R.id.airport_latitude);
+        TextView lon = result.findViewById(R.id.airport_longitude);
+        TextView website = result.findViewById(R.id.airport_website);
         TextView wiki = result.findViewById(R.id.airport_wiki);
 
+        title.setText(station.getIcao());
         name.setText(station.getName());
+        iata.setText(station.getIata());
+        icao.setText(station.getIcao());
+        city.setText(station.getCity());
+        country.setText(station.getCountry());
+        elev_ft.setText(station.getElevationFt().toString());
+        elev_m.setText(station.getElevationM().toString());
+        lat.setText(station.getLatitude().toString());
+        lon.setText(station.getLongitude().toString());
+        website.setText(station.getWebsite());
         wiki.setText(station.getWiki());
 
         Log.e(TAG, "onCreateView called for fragment number " + position);
