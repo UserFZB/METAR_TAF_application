@@ -67,6 +67,8 @@ public class BlankFragment extends Fragment {
             station = (Station) getArguments().getSerializable(KEY_OACI);
         }
 
+        progressDialog = new ProgressDialog(getContext());
+
         new API_service().searchMETAR(station.getIcao(), new Callback() {
             @Override
             public void onFailure(@NotNull Call call, @NotNull IOException e) {
@@ -89,7 +91,12 @@ public class BlankFragment extends Fragment {
 
                     Log.d(TAG, "response body to string =" + value);
                     metar = gson.fromJson(value, METAR.class);
-
+                    while(metar==null){
+                        progressDialog.setMessage("Please Wait");
+                        progressDialog.setCancelable(false);
+                        progressDialog.show();
+                    }
+                    progressDialog.dismiss();
                     Log.d(TAG, "response  en json =" + metar.toString());
                 }
 
@@ -119,7 +126,12 @@ public class BlankFragment extends Fragment {
 
                     Log.d(TAG, "response body to string =" + value);
                     taf = gson.fromJson(value, Taf.class);
-
+                    while(taf==null){
+                        progressDialog.setMessage("Please Wait");
+                        progressDialog.setCancelable(false);
+                        progressDialog.show();
+                    }
+                    progressDialog.dismiss();
                     Log.d(TAG, "response  en json =" + taf.toString());
                 }
             }
@@ -153,6 +165,4 @@ public class BlankFragment extends Fragment {
         transaction.replace(R.id.fragment_container_view, StationFragment.newInstance(position, station)).commit();
         Log.d(TAG, "change to station");
     }
-
-
 }
