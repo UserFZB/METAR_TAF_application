@@ -1,5 +1,6 @@
 package com.example.metar_taf;
 
+import android.content.res.Resources;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -66,13 +67,28 @@ public class MeteoFragment extends Fragment {
         FrameLayout rootView = (FrameLayout) result.findViewById(R.id.frame);
 
         TextView metar_txt = result.findViewById(R.id.metar_coded);
+        TextView time = result.findViewById(R.id.metar_time);
+        TextView temperature = result.findViewById(R.id.metar_temperature);
+        TextView dewpoint = result.findViewById(R.id.metar_dewpoint);
+        TextView humidity = result.findViewById(R.id.metar_humidity);
+        TextView pressure = result.findViewById(R.id.metar_pressure);
+        TextView wind = result.findViewById(R.id.metar_winds);
+        TextView visibility = result.findViewById(R.id.metar_visibility);
+
         TextView taf_txt = result.findViewById(R.id.taf_coded);
 
         if(metar!=null){
-            metar_txt.setText(metar.getStation());
+                metar_txt.setText(metar.getRaw());
+                time.setText(metar.getTime().getDt().toString());
+                temperature.setText(metar.getTemperature().getValue().toString());
+                dewpoint.setText(metar.getDewpoint().getValue().toString());
+                humidity.setText(metar.getRelativeHumidity().toString());
+                pressure.setText((metar.getPressureAltitude()+" ("+metar.getAltimeter().getValue())+" mb)");
+                wind.setText(metar.getWindDirection().getValue()+"°/"+metar.getWindSpeed().getValue()+" kts");
+                visibility.setText(metar.getVisibility().getValue().toString());
         }
         if(taf!=null){
-            taf_txt.setText(taf.getMeta().toString());
+            taf_txt.setText(taf.getRaw());
         }
 
 

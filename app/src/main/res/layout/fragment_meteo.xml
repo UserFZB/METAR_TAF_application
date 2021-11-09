@@ -1,27 +1,311 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/alice_blue"
     tools:context=".MeteoFragment">
+
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:adjustViewBounds="true"
+            android:src="@mipmap/weather" />
+
+        <LinearLayout
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/airport_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="32dp"
+                android:textStyle="bold"
+                android:textSize="16dp"
+                android:text="NULL"
+                android:textColor="@color/lapis_lazuli" />
+
+            <TextView
+                android:id="@+id/airport_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="7dp"
+                android:text="NULL"
+                android:textColor="@color/lapis_lazuli" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="70dp"
+        android:layout_below="@+id/header"
+        android:layout_marginTop="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:stretchColumns="1">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#D0DEE8"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:gravity="center">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/lapis_lazuli"
+                        android:textSize="16dp"
+                        android:textStyle="bold"
+                        android:layout_span="2"
+                        android:text="METAR"
+                        android:layout_gravity="center_horizontal"/>
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#E2EDF2"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="5dp"
+                    android:layout_marginTop="7dp"
+                    android:gravity="left">
+                    <TextView
+                        android:id="@+id/metar_coded"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:textSize="16dp"
+                        android:layout_span="2"
+                        android:text="NULL"
+                        android:layout_gravity="left"/>
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="7dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
+                        android:textSize="14dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/lapis_lazuli"
+                        android:text="Time :" />
+                    <TextView
+                        android:id="@+id/metar_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
+                        android:paddingLeft="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:textSize="14dp"
+                        android:textColor="@color/black"
+                        android:text="NULL" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="7dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
+                        android:textSize="14dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/lapis_lazuli"
+                        android:text="Temperature :" />
+                    <TextView
+                        android:id="@+id/metar_temperature"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
+                        android:paddingLeft="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:textSize="14dp"
+                        android:textColor="@color/black"
+                        android:text="NULL" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="7dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
+                        android:textSize="14dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/lapis_lazuli"
+                        android:text="Dewpoint :" />
+                    <TextView
+                        android:id="@+id/metar_dewpoint"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
+                        android:paddingLeft="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:textSize="14dp"
+                        android:textColor="@color/black"
+                        android:text="NULL" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="7dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
+                        android:textSize="14dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/lapis_lazuli"
+                        android:text="Humidity :" />
+                    <TextView
+                        android:id="@+id/metar_humidity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
+                        android:paddingLeft="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:textSize="14dp"
+                        android:textColor="@color/black"
+                        android:text="NULL" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="7dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
+                        android:textSize="14dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/lapis_lazuli"
+                        android:text="Pressure :" />
+                    <TextView
+                        android:id="@+id/metar_pressure"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
+                        android:paddingLeft="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:textSize="14dp"
+                        android:textColor="@color/black"
+                        android:text="NULL" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="7dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
+                        android:textSize="14dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/lapis_lazuli"
+                        android:text="Winds :" />
+                    <TextView
+                        android:id="@+id/metar_winds"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
+                        android:paddingLeft="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:textSize="14dp"
+                        android:textColor="@color/black"
+                        android:text="NULL" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="7dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
+                        android:textSize="14dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/lapis_lazuli"
+                        android:text="Visibility :" />
+                    <TextView
+                        android:id="@+id/metar_visibility"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
+                        android:paddingLeft="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:textSize="14dp"
+                        android:textColor="@color/black"
+                        android:text="NULL" />
+                </TableRow>
+
+            </TableLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/metar_coded"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TEST" />
 
         <TextView
             android:id="@+id/taf_coded"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TEST" />
+            android:text="NULL" />
 
     </LinearLayout>
 
-</FrameLayout>
+</RelativeLayout>

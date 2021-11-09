@@ -14,36 +14,504 @@
 
         <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/station"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="20dp"/>
-
-        <TextView
-            android:id="@+id/airport_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="28dp"
-            android:textColor="@color/lapis_lazuli"
-            android:text="TEST" />
+            android:layout_marginTop="20dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/airport" />
+
+        <LinearLayout
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/airport_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="32dp"
+                android:textStyle="bold"
+                android:textSize="16dp"
+                android:text="TEST"
+                android:textColor="@color/lapis_lazuli" />
+
+            <TextView
+                android:id="@+id/airport_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="7dp"
+                android:text="TEST"
+                android:textColor="@color/lapis_lazuli" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="70dp"
         android:layout_below="@+id/header"
-        android:layout_marginTop="10dp"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp">
+        android:layout_marginTop="10dp">
 
-        <TextView
-            android:id="@+id/airport_wiki"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TEST" />
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
 
-    </RelativeLayout>
+            <TableLayout
+                android:id="@+id/tab1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:stretchColumns="1">
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/lapis_lazuli"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:gravity="center">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/alice_blue"
+                        android:textSize="16dp"
+                        android:textStyle="bold"
+                        android:layout_span="2"
+                        android:text="Informations"
+                        android:layout_gravity="center_horizontal"/>
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="7dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
+                        android:textSize="14dp"
+                        android:textStyle="bold"
+                        android:background="#D0DEE8"
+                        android:textColor="@color/lapis_lazuli"
+                        android:gravity="center"
+                        android:text="IATA" />
+                    <TextView
+                        android:id="@+id/airport_iata"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
+                        android:paddingLeft="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:textSize="14dp"
+                        android:background="#E2EDF2"
+                        android:textColor="@color/black"
+                        android:text="TEST" />
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="7dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
+                        android:textSize="14dp"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:background="#D0DEE8"
+                        android:textColor="@color/lapis_lazuli"
+                        android:text="ICAO" />
+                    <TextView
+                        android:id="@+id/airport_icao"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
+                        android:paddingLeft="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:textSize="14dp"
+                        android:background="#E2EDF2"
+                        android:textColor="@color/black"
+                        android:text="TEST" />
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="7dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
+                        android:textSize="14dp"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:background="#D0DEE8"
+                        android:textColor="@color/lapis_lazuli"
+                        android:text="City" />
+                    <TextView
+                        android:id="@+id/airport_city"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
+                        android:paddingLeft="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:textSize="14dp"
+                        android:background="#E2EDF2"
+                        android:textColor="@color/black"
+                        android:text="TEST" />
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="7dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="#D0DEE8"
+                        android:textColor="@color/lapis_lazuli"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
+                        android:textSize="14dp"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:text="Country" />
+                    <TextView
+                        android:id="@+id/airport_country"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
+                        android:paddingLeft="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:textSize="14dp"
+                        android:background="#E2EDF2"
+                        android:textColor="@color/black"
+                        android:text="TEST" />
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="7dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
+                        android:textSize="14dp"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:background="#D0DEE8"
+                        android:textColor="@color/lapis_lazuli"
+                        android:text="Elevation" />
+                    <TextView
+                        android:id="@+id/airport_elevation_ft"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
+                        android:paddingLeft="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:textSize="14dp"
+                        android:background="#E2EDF2"
+                        android:textColor="@color/black"
+                        android:text="TEST" />
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/airport_elevation_m"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
+                        android:paddingLeft="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:textSize="14dp"
+                        android:background="#E2EDF2"
+                        android:textColor="@color/black"
+                        android:text="TEST"
+                        android:layout_column="1"/>
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="7dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
+                        android:textSize="14dp"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:background="#D0DEE8"
+                        android:textColor="@color/lapis_lazuli"
+                        android:text="Latitude" />
+                    <TextView
+                        android:id="@+id/airport_latitude"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
+                        android:paddingLeft="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:textSize="14dp"
+                        android:background="#E2EDF2"
+                        android:textColor="@color/black"
+                        android:text="TEST" />
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="7dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
+                        android:textSize="14dp"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:background="#D0DEE8"
+                        android:textColor="@color/lapis_lazuli"
+                        android:text="Longitude" />
+                    <TextView
+                        android:id="@+id/airport_longitude"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
+                        android:paddingLeft="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:textSize="14dp"
+                        android:background="#E2EDF2"
+                        android:textColor="@color/black"
+                        android:text="TEST" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="7dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
+                        android:textSize="14dp"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:background="#D0DEE8"
+                        android:textColor="@color/lapis_lazuli"
+                        android:text="Runways" />
+                    <TextView
+                        android:id="@+id/airport_runways"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
+                        android:paddingLeft="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:textSize="14dp"
+                        android:background="#E2EDF2"
+                        android:textColor="@color/black"
+                        android:text="TEST" />
+                </TableRow>
+            </TableLayout>
+
+            <TableLayout
+                android:id="@+id/table_runway"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tab1"
+                android:layout_marginTop="7dp"
+                android:stretchColumns="*">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/lapis_lazuli"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:gravity="center">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/alice_blue"
+                        android:textSize="16dp"
+                        android:textStyle="bold"
+                        android:layout_span="2"
+                        android:text="Runways"
+                        android:layout_gravity="center_horizontal"/>
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="7dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
+                        android:paddingLeft="9dp"
+                        android:paddingRight="9dp"
+                        android:textSize="14dp"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:background="#D0DEE8"
+                        android:textColor="@color/lapis_lazuli"
+                        android:text="Id" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
+                        android:paddingLeft="9dp"
+                        android:paddingRight="9dp"
+                        android:textSize="14dp"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:background="#D0DEE8"
+                        android:textColor="@color/lapis_lazuli"
+                        android:text="Length" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
+                        android:paddingLeft="9dp"
+                        android:paddingRight="9dp"
+                        android:textSize="14dp"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:background="#D0DEE8"
+                        android:textColor="@color/lapis_lazuli"
+                        android:text="Width" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
+                        android:paddingLeft="9dp"
+                        android:paddingRight="9dp"
+                        android:textSize="14dp"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:background="#D0DEE8"
+                        android:textColor="@color/lapis_lazuli"
+                        android:text="Surface" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
+                        android:paddingLeft="9dp"
+                        android:paddingRight="9dp"
+                        android:textSize="14dp"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:background="#D0DEE8"
+                        android:textColor="@color/lapis_lazuli"
+                        android:text="Bearing" />
+                </TableRow>
+            </TableLayout>
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/table_runway"
+                android:layout_marginTop="7dp"
+                android:stretchColumns="*">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:background="@color/lapis_lazuli"
+                    android:gravity="center">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/alice_blue"
+                        android:text="Plus d'infos sur le web"
+                        android:layout_span="2"
+                        android:layout_gravity="center"/>
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="7dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
+                        android:textSize="14dp"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:background="#D0DEE8"
+                        android:textColor="@color/lapis_lazuli"
+                        android:text="Website" />
+                    <TextView
+                        android:id="@+id/airport_website"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
+                        android:paddingLeft="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:textSize="14dp"
+                        android:background="#E2EDF2"
+                        android:textColor="@color/black"
+                        android:text="TEST" />
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="7dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
+                        android:paddingLeft="9dp"
+                        android:paddingRight="9dp"
+                        android:textSize="14dp"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:background="#D0DEE8"
+                        android:textColor="@color/lapis_lazuli"
+                        android:text="Wikipedia" />
+                    <TextView
+                        android:id="@+id/airport_wiki"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
+                        android:paddingLeft="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:textSize="14dp"
+                        android:background="#E2EDF2"
+                        android:textColor="@color/black"
+                        android:text="TEST" />
+                </TableRow>
+
+            </TableLayout>
+        </RelativeLayout>
+
+    </ScrollView>
 
 </RelativeLayout>

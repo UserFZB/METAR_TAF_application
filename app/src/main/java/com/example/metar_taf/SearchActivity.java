@@ -150,6 +150,9 @@ public class SearchActivity extends AppCompatActivity {
                         ResponseBody body = response.body();
                         String value = body.string();
                         Station station = gson.fromJson(value, Station.class);
+                        while(station==null){
+
+                        }
                         sendList.add(station);
                         Log.d(TAG, "response  en json =" + station.toString());
                         searchList.add(params[0]);
