@@ -1,4 +1,4 @@
-package com.example.metar_taf;
+package com.example.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ListAdapter;
 import android.widget.TextView;
+
+import com.example.metar_taf.R;
 
 import java.util.ArrayList;
 

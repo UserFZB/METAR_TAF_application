@@ -4,6 +4,8 @@ import android.content.res.Resources;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,9 +14,13 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import com.example.adapters.RecyclerViewAdapter;
 import com.example.pojo_metar.METAR;
 import com.example.pojo_station.Station;
+import com.example.pojo_taf.Forecast;
 import com.example.pojo_taf.Taf;
+
+import java.util.List;
 
 public class MeteoFragment extends Fragment {
 
@@ -66,6 +72,9 @@ public class MeteoFragment extends Fragment {
 
         FrameLayout rootView = (FrameLayout) result.findViewById(R.id.frame);
 
+        TextView title = result.findViewById(R.id.airport_title);
+        TextView name = result.findViewById(R.id.airport_name);
+
         TextView metar_txt = result.findViewById(R.id.metar_coded);
         TextView time = result.findViewById(R.id.metar_time);
         TextView temperature = result.findViewById(R.id.metar_temperature);
@@ -76,7 +85,12 @@ public class MeteoFragment extends Fragment {
         TextView visibility = result.findViewById(R.id.metar_visibility);
 
         TextView taf_txt = result.findViewById(R.id.taf_coded);
+        RecyclerView recyclerView_forecasts = result.findViewById(R.id.forecast_recycler_view);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(result.getContext());
+        recyclerView_forecasts.setLayoutManager(layoutManager);
 
+        title.setText(station.getIcao());
+        name.setText(station.getName());
 
         if(metar!=null){
                 metar_txt.setText(metar.getRaw());
@@ -90,7 +104,10 @@ public class MeteoFragment extends Fragment {
         }
         if(taf!=null){
             taf_txt.setText(taf.getRaw());
-
+            List<Forecast> forecasts = taf.getForecast();
+            RecyclerViewAdapter adapter = new RecyclerViewAdapter(forecasts);
+            recyclerView_forecasts.setAdapter(adapter);
+            adapter.notifyDataSetChanged();
         }
 
 

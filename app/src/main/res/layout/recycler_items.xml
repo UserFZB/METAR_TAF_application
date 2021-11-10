@@ -1,6 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/taf_forecast"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:background="#D0DEE8"
+        android:layout_marginBottom="1dp"
+        android:padding="5dp"
+        android:layout_marginTop="7dp"
+        android:text="NULL"
+        android:textColor="@color/black"
+        android:textSize="16dp" />
+
+    <TextView
+        android:id="@+id/forecast_visibility"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#E2EDF2"
+        android:layout_below="@+id/taf_forecast"
+        android:layout_marginBottom="1dp"
+        android:layout_toEndOf="@+id/t1"
+        android:padding="5dp"
+        android:textColor="@color/black"
+        android:text="Visibility: "/>
+
+    <TextView
+        android:id="@+id/forecast_altimeter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#E2EDF2"
+        android:layout_below="@+id/taf_forecast"
+        android:layout_marginBottom="1dp"
+        android:layout_toEndOf="@+id/t1"
+        android:padding="5dp"
+        android:textColor="@color/black"
+        android:text="Altimeter: "/>
+
+    <TextView
+        android:id="@+id/forecast_winds"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#E2EDF2"
+        android:layout_below="@+id/taf_forecast"
+        android:layout_marginBottom="1dp"
+        android:layout_toEndOf="@+id/t1"
+        android:padding="5dp"
+        android:textColor="@color/black"
+        android:text="Winds: "/>
+
+    <TextView
+        android:id="@+id/forecast_probability"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#E2EDF2"
+        android:layout_below="@+id/taf_forecast"
+        android:layout_marginBottom="1dp"
+        android:layout_toEndOf="@+id/t1"
+        android:padding="5dp"
+        android:textColor="@color/black"
+        android:text="Probability: "/>
+
+    <TextView
+        android:id="@+id/forecast_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#E2EDF2"
+        android:layout_below="@+id/taf_forecast"
+        android:layout_marginBottom="1dp"
+        android:layout_toEndOf="@+id/t1"
+        android:padding="5dp"
+        android:textColor="@color/black"
+        android:text="Type: "/>
+
+    <TextView
+        android:id="@+id/forecast_flight_rules"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#E2EDF2"
+        android:layout_below="@+id/taf_forecast"
+        android:layout_marginBottom="1dp"
+        android:layout_toEndOf="@+id/t1"
+        android:padding="5dp"
+        android:textColor="@color/black"
+        android:text="Flight rules: "/>
+
+    <TextView
+        android:id="@+id/forecast_other"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#E2EDF2"
+        android:layout_below="@+id/taf_forecast"
+        android:layout_marginBottom="1dp"
+        android:layout_toEndOf="@+id/t1"
+        android:padding="5dp"
+        android:textColor="@color/black"
+        android:text="Other: "/>
+
+    <TextView
+        android:id="@+id/forecast_summary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#E2EDF2"
+        android:layout_below="@+id/taf_forecast"
+        android:layout_marginBottom="1dp"
+        android:layout_toEndOf="@+id/t1"
+        android:padding="5dp"
+        android:textColor="@color/black"
+        android:text="Summary: "/>
+
+
+
+
+</LinearLayout>
