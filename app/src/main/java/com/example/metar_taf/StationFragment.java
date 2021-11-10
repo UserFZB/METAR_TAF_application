@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -75,7 +76,9 @@ public class StationFragment extends Fragment {
         TextView lat = result.findViewById(R.id.airport_latitude);
         TextView lon = result.findViewById(R.id.airport_longitude);
         TextView website = result.findViewById(R.id.airport_website);
+        //website.setMovementMethod(LinkMovementMethod.getInstance());
         TextView wiki = result.findViewById(R.id.airport_wiki);
+        //wiki.setMovementMethod(LinkMovementMethod.getInstance());
 
         title.setText(station.getIcao());
         name.setText(station.getName());

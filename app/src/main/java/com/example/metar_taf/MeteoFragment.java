@@ -77,6 +77,7 @@ public class MeteoFragment extends Fragment {
 
         TextView taf_txt = result.findViewById(R.id.taf_coded);
 
+
         if(metar!=null){
                 metar_txt.setText(metar.getRaw());
                 time.setText(metar.getTime().getDt().toString());
@@ -89,6 +90,7 @@ public class MeteoFragment extends Fragment {
         }
         if(taf!=null){
             taf_txt.setText(taf.getRaw());
+
         }
 
 
