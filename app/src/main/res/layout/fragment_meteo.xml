@@ -18,7 +18,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
             android:adjustViewBounds="true"
-            android:src="@mipmap/weather" />
+            android:src="@drawable/application_meteo" />
 
         <LinearLayout
             android:id="@+id/title"
@@ -34,7 +34,6 @@
                 android:layout_marginTop="32dp"
                 android:textStyle="bold"
                 android:textSize="16dp"
-                android:text="NULL"
                 android:textColor="@color/lapis_lazuli" />
 
             <TextView
@@ -43,7 +42,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="7dp"
-                android:text="NULL"
                 android:textColor="@color/lapis_lazuli" />
 
         </LinearLayout>

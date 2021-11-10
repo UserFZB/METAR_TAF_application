@@ -16,4 +16,23 @@
     <string name="no_airport">Unexisting airport</string>
     <string name="error_request">No response from API</string>
     <string name="already">This airport is already in the list</string>
+    <string name="info">Informations</string>
+    <string name="IATA">IATA</string>
+    <string name="ICAO">ICAO</string>
+    <string name="city">City</string>
+    <string name="country">Country</string>
+    <string name="elevation">Elevation</string>
+    <string name="latitude">Latitude</string>
+    <string name="longitude">Longitude</string>
+    <string name="runways">Runways</string>
+    <string name="id">Id</string>
+    <string name="length">Length</string>
+    <string name="width">Width</string>
+    <string name="surface">Surface</string>
+    <string name="bearing">Bearing</string>
+    <string name="website">Website</string>
+    <string name="wiki">Wikipedia</string>
+    <string name="wait">Please wait, query still running</string>
+    <string name="no_website">No website</string>
+    <string name="no_wiki">No wikipedia page</string>
 </resources>

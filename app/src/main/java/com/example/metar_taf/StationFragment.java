@@ -86,8 +86,8 @@ public class StationFragment extends Fragment {
         icao.setText(station.getIcao());
         city.setText(station.getCity());
         country.setText(station.getCountry());
-        elev_ft.setText(station.getElevationFt().toString());
-        elev_m.setText(station.getElevationM().toString());
+        elev_ft.setText(station.getElevationFt().toString()+" ft");
+        elev_m.setText(station.getElevationM().toString()+" m");
         lat.setText(station.getLatitude().toString());
         lon.setText(station.getLongitude().toString());
 
@@ -126,7 +126,7 @@ public class StationFragment extends Fragment {
             length.setText(Math.round(runway.getLengthFt()/3.281)+" m");
             width.setText(Math.round(runway.getWidthFt()/3.281)+" m");
             surface.setText(runway.getSurface());
-            bearing.setText(runway.getBearing1()+"/"+runway.getIdent2());
+            bearing.setText(runway.getBearing1()+"/"+runway.getBearing2());
 
             row.addView(id);
             row.addView(length);
@@ -137,8 +137,18 @@ public class StationFragment extends Fragment {
             table.addView(row);
         }
 
-        website.setText(station.getWebsite());
-        wiki.setText(station.getWiki());
+        if (station.getWebsite()==null){
+            website.setText(getContext().getString(R.string.no_website));
+        }else{
+            website.setText(station.getWebsite());
+        }
+        if (station.getWiki()==null){
+            wiki.setText(getContext().getString(R.string.no_wiki));
+        }else{
+            wiki.setText(station.getWiki());
+        }
+
+
 
         Log.e(TAG, "onCreateView called for fragment number " + position);
 

@@ -124,7 +124,7 @@ public class SearchActivity extends AppCompatActivity {
             super.onPreExecute();
             // display a progress dialog for good user experiance
             progressDialog = new ProgressDialog(SearchActivity.this);
-            progressDialog.setMessage("Please Wait");
+            progressDialog.setMessage(getApplicationContext().getString(R.string.wait));
             progressDialog.setCancelable(false);
             progressDialog.show();
         }

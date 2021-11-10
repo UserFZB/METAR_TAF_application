@@ -79,12 +79,12 @@ public class BlankFragment extends Fragment {
                 final Gson gson = new Gson();
                 Log.d(TAG, "response from service = " + response);
                 if (response.code() != 200) {
-                    Looper.prepare();
+                    /*Looper.prepare();
                     Toast.makeText(
                             getContext(),
                             getContext().getString(R.string.no_airport),
                             Toast.LENGTH_LONG).show();
-                    Looper.loop();
+                    Looper.loop();*/
                 } else {
                     ResponseBody body = response.body();
                     String value = body.string();
@@ -114,12 +114,12 @@ public class BlankFragment extends Fragment {
                 final Gson gson = new Gson();
                 Log.d(TAG, "response from service = " + response);
                 if (response.code() != 200) {
-                    Looper.prepare();
+                   /* Looper.prepare();
                     Toast.makeText(
                             getContext(),
                             getContext().getString(R.string.no_airport),
                             Toast.LENGTH_LONG).show();
-                    Looper.loop();
+                    Looper.loop();*/
                 } else {
                     ResponseBody body = response.body();
                     String value = body.string();
