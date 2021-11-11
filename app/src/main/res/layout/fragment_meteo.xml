@@ -429,17 +429,17 @@
                     android:paddingLeft="5dp"
                     android:paddingTop="5dp"
                     android:paddingBottom="5dp">
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/forecast_recycler_view"
-                        android:scrollbars="vertical"
-                        android:nestedScrollingEnabled="false"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
                 </TableRow>
 
             </TableLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/forecast_recycler_view"
+                android:scrollbars="vertical"
+                android:nestedScrollingEnabled="false"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/table_taf"/>
 
         </RelativeLayout>
 
