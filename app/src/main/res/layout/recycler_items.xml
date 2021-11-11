@@ -13,7 +13,6 @@
         android:layout_marginBottom="1dp"
         android:padding="5dp"
         android:layout_marginTop="7dp"
-        android:text="NULL"
         android:textColor="@color/black"
         android:textSize="16dp" />
 
@@ -27,7 +26,7 @@
         android:layout_toEndOf="@+id/t1"
         android:padding="5dp"
         android:textColor="@color/black"
-        android:text="Visibility: "/>
+        android:text="@string/visibility"/>
 
     <TextView
         android:id="@+id/forecast_altimeter"
@@ -39,7 +38,7 @@
         android:layout_toEndOf="@+id/t1"
         android:padding="5dp"
         android:textColor="@color/black"
-        android:text="Altimeter: "/>
+        android:text="@string/altimeter"/>
 
     <TextView
         android:id="@+id/forecast_winds"
@@ -51,7 +50,7 @@
         android:layout_toEndOf="@+id/t1"
         android:padding="5dp"
         android:textColor="@color/black"
-        android:text="Winds: "/>
+        android:text="@string/winds"/>
 
     <TextView
         android:id="@+id/forecast_probability"
@@ -63,7 +62,7 @@
         android:layout_toEndOf="@+id/t1"
         android:padding="5dp"
         android:textColor="@color/black"
-        android:text="Probability: "/>
+        android:text="@string/probability"/>
 
     <TextView
         android:id="@+id/forecast_type"
@@ -75,7 +74,7 @@
         android:layout_toEndOf="@+id/t1"
         android:padding="5dp"
         android:textColor="@color/black"
-        android:text="Type: "/>
+        android:text="@string/type"/>
 
     <TextView
         android:id="@+id/forecast_flight_rules"
@@ -87,7 +86,7 @@
         android:layout_toEndOf="@+id/t1"
         android:padding="5dp"
         android:textColor="@color/black"
-        android:text="Flight rules: "/>
+        android:text="@string/rules"/>
 
     <TextView
         android:id="@+id/forecast_other"
@@ -99,7 +98,7 @@
         android:layout_toEndOf="@+id/t1"
         android:padding="5dp"
         android:textColor="@color/black"
-        android:text="Other: "/>
+        android:text="@string/other"/>
 
     <TextView
         android:id="@+id/forecast_summary"
@@ -111,7 +110,7 @@
         android:layout_toEndOf="@+id/t1"
         android:padding="5dp"
         android:textColor="@color/black"
-        android:text="Summary: "/>
+        android:text="@string/summary"/>
 
 
 

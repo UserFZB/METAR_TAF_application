@@ -102,10 +102,10 @@ public class ResultsActivity extends AppCompatActivity  {
             startMarker.setOnMarkerClickListener(new Marker.OnMarkerClickListener() {
                 @Override
                 public boolean onMarkerClick(Marker marker, MapView mapView) {
-                    Toast.makeText(
+                    /*Toast.makeText(
                             getApplicationContext(),
                             startMarker.getTitle(),
-                            Toast.LENGTH_LONG).show();
+                            Toast.LENGTH_LONG).show();*/
                     Intent intent = new Intent(ResultsActivity.this, AirportActivity.class);
                     intent.putExtra("POSITION", researchedAirports.indexOf(pos));
                     intent.putExtra("AIRPORT_LIST", researchedAirports);

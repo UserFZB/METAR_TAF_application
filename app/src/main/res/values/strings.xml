@@ -35,4 +35,20 @@
     <string name="wait">Please wait, query still running</string>
     <string name="no_website">No website</string>
     <string name="no_wiki">No wikipedia page</string>
+    <string name="metar">METAR</string>
+    <string name="time">Time : </string>
+    <string name="temperature">Temperature : </string>
+    <string name="dewpoint">Dewpoint : </string>
+    <string name="humidity">Humidity : </string>
+    <string name="pressure">Pressure : </string>
+    <string name="winds">Winds : </string>
+    <string name="visibility">Visibility : </string>
+    <string name="taf">TAF</string>
+    <string name="altimeter">Altimeter : </string>
+    <string name="probability">Probability : </string>
+    <string name="type">Type : </string>
+    <string name="rules">Flight rules : </string>
+    <string name="other">Other : </string>
+    <string name="summary">Summary : </string>
+    <string name="clouds">Clouds : </string>
 </resources>
