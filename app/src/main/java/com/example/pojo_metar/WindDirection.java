@@ -4,7 +4,9 @@ package com.example.pojo_metar;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class WindDirection {
+import java.io.Serializable;
+
+public class WindDirection implements Serializable {
 
     @SerializedName("repr")
     @Expose

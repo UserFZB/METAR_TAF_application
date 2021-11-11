@@ -4,7 +4,9 @@ package com.example.pojo_metar;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Units {
+import java.io.Serializable;
+
+public class Units implements Serializable {
 
     @SerializedName("accumulation")
     @Expose
