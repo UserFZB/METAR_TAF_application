@@ -1,19 +1,21 @@
-package com.example.metar_taf;
+package com.example.adapters;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
+import com.example.metar_taf.BlankFragment;
 import com.example.pojo_station.Station;
 
 import java.util.ArrayList;
 
 public class PageAdapter extends FragmentStatePagerAdapter {
 
-    // 1 - Array of colors that will be passed to PageFragment
+    private static final String TAG = "PageAdapter";
+
     private ArrayList<Station> stationArrayList;
 
-    // 2 - Default Constructor
+    // Default Constructor
     public PageAdapter(FragmentManager mgr, ArrayList<Station> stations) {
         super(mgr);
         this.stationArrayList = stations;

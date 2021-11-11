@@ -51,4 +51,7 @@
     <string name="other">Other : </string>
     <string name="summary">Summary : </string>
     <string name="clouds">Clouds : </string>
+    <string name="from">From : </string>
+    <string name="to">To : </string>
+    <string name="no_clouds">No clouds</string>
 </resources>

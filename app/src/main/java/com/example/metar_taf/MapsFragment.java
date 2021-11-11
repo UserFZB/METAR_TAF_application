@@ -23,6 +23,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapsFragment extends Fragment {
 
+    private static final String TAG = "MapsFragment";
+
     private static final String KEY_POSITION = "position";
     private static final String KEY_OACI = "oaci";;
 

@@ -1,12 +1,15 @@
-package com.example.metar_taf;
+package com.example.adapters;
 
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.metar_taf.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class CircularViewPageHandler implements ViewPager.OnPageChangeListener {
 
-    private ViewPager mViewPager;
+    private static final String TAG = "CircularViewPageHandler";
+
+    ViewPager mViewPager;
     private int         mCurrentPosition;
     private int         mScrollState;
     BottomNavigationView bottomNav;

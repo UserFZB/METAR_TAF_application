@@ -148,8 +148,6 @@ public class StationFragment extends Fragment {
             wiki.setText(station.getWiki());
         }
 
-
-
         Log.e(TAG, "onCreateView called for fragment number " + position);
 
         return result;

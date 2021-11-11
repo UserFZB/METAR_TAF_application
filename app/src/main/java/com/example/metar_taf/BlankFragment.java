@@ -1,20 +1,17 @@
 package com.example.metar_taf;
 
 import android.app.ProgressDialog;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Looper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.API.API_service;
 import com.example.pojo_metar.METAR;
 import com.example.pojo_station.Station;
 import com.example.pojo_taf.Taf;
