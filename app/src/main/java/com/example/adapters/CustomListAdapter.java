@@ -14,6 +14,8 @@ import java.util.ArrayList;
 
 public class CustomListAdapter extends BaseAdapter implements ListAdapter {
 
+    private static final String TAG = "CustomListAdapter";
+
     private ArrayList<String> list = new ArrayList<String>();
     private Context context;
 
@@ -48,7 +50,6 @@ public class CustomListAdapter extends BaseAdapter implements ListAdapter {
 
         TextView code = (TextView)view.findViewById(R.id.airport_code);
         code.setText(list.get(position));
-
 
         return view;
     }

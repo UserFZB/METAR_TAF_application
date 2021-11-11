@@ -8,6 +8,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.adapters.CircularViewPageHandler;
+import com.example.adapters.PageAdapter;
 import com.example.pojo_station.Station;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayout;
@@ -15,6 +17,8 @@ import com.google.android.material.tabs.TabLayout;
 import java.util.ArrayList;
 
 public class AirportActivity extends AppCompatActivity {
+
+    private static final String TAG = "AirportActivity";
 
     ArrayList<Station> researchedAirports;
     int position;

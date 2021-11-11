@@ -103,13 +103,13 @@ public class MeteoFragment extends Fragment {
                 alti.setText(metar.getAltimeter().getValue().toString()+" "+metar.getUnits().getAltimeter());
                 int nb_clouds = metar.getClouds().size();
                 if (nb_clouds==0) {
-                    clouds.setText("no clouds");
+                    clouds.setText(getContext().getString(R.string.no_clouds));
                 }else{
                     String all_clouds = "";
                     for (int i=0; i<nb_clouds;i++){
                         all_clouds+= metar.getClouds().get(i).getType() +" altitude "+ metar.getClouds().get(i).getAltitude()+" "+metar.getUnits().getAltitude()+"   \n";
                     }
-                    all_clouds.trim();
+                    all_clouds = all_clouds.trim();
                     clouds.setText(all_clouds);
                 }
                 rules.setText(metar.getFlightRules());
@@ -123,7 +123,7 @@ public class MeteoFragment extends Fragment {
         if(taf!=null){
             taf_txt.setText(taf.getRaw());
             List<Forecast> forecasts = taf.getForecast();
-            RecyclerViewAdapter adapter = new RecyclerViewAdapter(forecasts);
+            RecyclerViewAdapter adapter = new RecyclerViewAdapter(forecasts,getContext(),taf.getUnits());
             recyclerView_forecasts.setAdapter(adapter);
             adapter.notifyDataSetChanged();
         }

@@ -46,6 +46,7 @@ import okhttp3.ResponseBody;
 public class ResultsActivity extends AppCompatActivity  {
 
     private static final String TAG = "ResultsActivity";
+
     private MapView myOpenMapView = null;
     ArrayList<Station> researchedAirports;
     private static String PROVIDER = "ResultsActivity";
