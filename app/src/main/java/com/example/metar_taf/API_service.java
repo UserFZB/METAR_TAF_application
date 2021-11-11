@@ -13,7 +13,7 @@ public class API_service {
     public void searchMETAR(String query, Callback callback){
         OkHttpClient client = new OkHttpClient();
 
-        Request request = new Request.Builder().url("https://avwx.rest/api/metar/"+query+"?options=&airport=true&reporting=true&format=json&onfail=cache&token=r-He1BNsyYCyVTzA0-T8xqAVVtBlsu7ib8BWPiuZ-uc").build();
+        Request request = new Request.Builder().url("https://avwx.rest/api/metar/"+query+"?options=summary&airport=true&reporting=true&format=json&onfail=cache&token=r-He1BNsyYCyVTzA0-T8xqAVVtBlsu7ib8BWPiuZ-uc").build();
         Log.d(TAG, "requete=" + request.toString());
 
         client.newCall(request).enqueue(callback);

@@ -76,7 +76,11 @@ public class MeteoFragment extends Fragment {
         TextView name = result.findViewById(R.id.airport_name);
 
         TextView metar_txt = result.findViewById(R.id.metar_coded);
+        TextView metar_sum = result.findViewById(R.id.metar_summary);
         TextView time = result.findViewById(R.id.metar_time);
+        TextView alti = result.findViewById(R.id.metar_alti);
+        TextView rules = result.findViewById(R.id.metar_rules);
+        TextView clouds = result.findViewById(R.id.metar_clouds);
         TextView temperature = result.findViewById(R.id.metar_temperature);
         TextView dewpoint = result.findViewById(R.id.metar_dewpoint);
         TextView humidity = result.findViewById(R.id.metar_humidity);
@@ -94,13 +98,27 @@ public class MeteoFragment extends Fragment {
 
         if(metar!=null){
                 metar_txt.setText(metar.getRaw());
-                time.setText(metar.getTime().getDt().toString());
-                temperature.setText(metar.getTemperature().getValue().toString());
-                dewpoint.setText(metar.getDewpoint().getValue().toString());
+                metar_sum.setText(metar.getSummary());
+                time.setText(metar.getTime().getDt().substring(0,10)+" "+metar.getTime().getDt().substring(11,19));
+                alti.setText(metar.getAltimeter().getValue().toString()+" "+metar.getUnits().getAltimeter());
+                int nb_clouds = metar.getClouds().size();
+                if (nb_clouds==0) {
+                    clouds.setText("no clouds");
+                }else{
+                    String all_clouds = "";
+                    for (int i=0; i<nb_clouds;i++){
+                        all_clouds+= metar.getClouds().get(i).getType() +" altitude "+ metar.getClouds().get(i).getAltitude()+" "+metar.getUnits().getAltitude()+"   \n";
+                    }
+                    all_clouds.trim();
+                    clouds.setText(all_clouds);
+                }
+                rules.setText(metar.getFlightRules());
+                temperature.setText(metar.getTemperature().getValue().toString()+" °"+metar.getUnits().getTemperature());
+                dewpoint.setText(metar.getDewpoint().getValue().toString()+" °"+metar.getUnits().getTemperature());
                 humidity.setText(metar.getRelativeHumidity().toString());
                 pressure.setText((metar.getPressureAltitude()+" ("+metar.getAltimeter().getValue())+" mb)");
-                wind.setText(metar.getWindDirection().getValue()+"°/"+metar.getWindSpeed().getValue()+" kts");
-                visibility.setText(metar.getVisibility().getValue().toString());
+                wind.setText(metar.getWindDirection().getValue()+" °/ "+metar.getWindSpeed().getValue()+" "+metar.getUnits().getWindSpeed());
+                visibility.setText(metar.getVisibility().getValue().toString()+" "+metar.getUnits().getVisibility());
         }
         if(taf!=null){
             taf_txt.setText(taf.getRaw());

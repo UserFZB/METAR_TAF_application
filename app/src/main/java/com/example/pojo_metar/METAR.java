@@ -81,6 +81,9 @@ public class METAR implements Serializable {
     @SerializedName("units")
     @Expose
     private Units units;
+    @SerializedName("summary")
+    @Expose
+    private String summary;
 
     public Meta getMeta() {
         return meta;
@@ -274,6 +277,14 @@ public class METAR implements Serializable {
         this.units = units;
     }
 
+    public String getSummary() {
+        return summary;
+    }
+
+    public void setSummary(String summary) {
+        this.summary = summary;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -373,6 +384,9 @@ public class METAR implements Serializable {
         sb.append("units");
         sb.append('=');
         sb.append(((this.units == null)?"<null>":this.units));
+        sb.append("summary");
+        sb.append('=');
+        sb.append(((this.summary == null)?"<null>":this.summary));
         sb.append(',');
         if (sb.charAt((sb.length()- 1)) == ',') {
             sb.setCharAt((sb.length()- 1), ']');
