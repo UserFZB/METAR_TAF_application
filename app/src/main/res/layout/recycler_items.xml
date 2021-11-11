@@ -1,127 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    app:cardCornerRadius="8dp"
+    app:cardElevation="3dp"
+    android:layout_marginTop="7dp"
+    app:strokeColor="#D0DEE8"
+    app:strokeWidth="10dp"
+    android:foreground="@drawable/borders">
 
-    <TextView
-        android:id="@+id/taf_forecast"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:background="#D0DEE8"
-        android:layout_marginBottom="1dp"
-        android:padding="5dp"
-        android:layout_marginTop="7dp"
-        android:textColor="@color/black"
-        android:textSize="16dp" />
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/forecast_summary"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#E2EDF2"
-        android:layout_below="@+id/taf_forecast"
-        android:layout_marginBottom="1dp"
-        android:layout_toEndOf="@+id/t1"
-        android:padding="5dp"
-        android:textColor="@color/dark_salmon"
-        android:text="@string/summary"/>
+        <TextView
+            android:id="@+id/taf_forecast"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="1dp"
+            android:background="#D0DEE8"
+            android:padding="5dp"
+            android:textColor="@color/black"
+            android:textSize="16dp" />
 
-    <TextView
-        android:id="@+id/forecast_visibility"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#E2EDF2"
-        android:layout_below="@+id/taf_forecast"
-        android:layout_marginBottom="1dp"
-        android:layout_toEndOf="@+id/t1"
-        android:padding="5dp"
-        android:textColor="@color/black"
-        android:text="@string/visibility"/>
+        <TextView
+            android:id="@+id/forecast_summary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/taf_forecast"
+            android:layout_marginBottom="1dp"
+            android:layout_toEndOf="@+id/t1"
+            android:background="@color/white"
+            android:padding="5dp"
+            android:text="@string/summary"
+            android:textColor="@color/dark_salmon" />
 
-    <TextView
-        android:id="@+id/forecast_altimeter"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#E2EDF2"
-        android:layout_below="@+id/taf_forecast"
-        android:layout_marginBottom="1dp"
-        android:layout_toEndOf="@+id/t1"
-        android:padding="5dp"
-        android:textColor="@color/black"
-        android:text="@string/altimeter"/>
+        <TextView
+            android:id="@+id/forecast_visibility"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/taf_forecast"
+            android:layout_marginBottom="1dp"
+            android:layout_toEndOf="@+id/t1"
+            android:background="#E2EDF2"
+            android:padding="5dp"
+            android:text="@string/visibility"
+            android:textColor="@color/black" />
 
-    <TextView
-        android:id="@+id/forecast_winds"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#E2EDF2"
-        android:layout_below="@+id/taf_forecast"
-        android:layout_marginBottom="1dp"
-        android:layout_toEndOf="@+id/t1"
-        android:padding="5dp"
-        android:textColor="@color/black"
-        android:text="@string/winds"/>
+        <TextView
+            android:id="@+id/forecast_altimeter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/taf_forecast"
+            android:layout_marginBottom="1dp"
+            android:layout_toEndOf="@+id/t1"
+            android:background="#E2EDF2"
+            android:padding="5dp"
+            android:text="@string/altimeter"
+            android:textColor="@color/black" />
 
-    <TextView
-        android:id="@+id/forecast_probability"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#E2EDF2"
-        android:layout_below="@+id/taf_forecast"
-        android:layout_marginBottom="1dp"
-        android:layout_toEndOf="@+id/t1"
-        android:padding="5dp"
-        android:textColor="@color/black"
-        android:text="@string/probability"/>
+        <TextView
+            android:id="@+id/forecast_winds"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/taf_forecast"
+            android:layout_marginBottom="1dp"
+            android:layout_toEndOf="@+id/t1"
+            android:background="#E2EDF2"
+            android:padding="5dp"
+            android:text="@string/winds"
+            android:textColor="@color/black" />
 
-    <TextView
-        android:id="@+id/forecast_type"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#E2EDF2"
-        android:layout_below="@+id/taf_forecast"
-        android:layout_marginBottom="1dp"
-        android:layout_toEndOf="@+id/t1"
-        android:padding="5dp"
-        android:textColor="@color/black"
-        android:text="@string/type"/>
+        <TextView
+            android:id="@+id/forecast_probability"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/taf_forecast"
+            android:layout_marginBottom="1dp"
+            android:layout_toEndOf="@+id/t1"
+            android:background="#E2EDF2"
+            android:padding="5dp"
+            android:text="@string/probability"
+            android:textColor="@color/black" />
 
-    <TextView
-        android:id="@+id/forecast_flight_rules"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#E2EDF2"
-        android:layout_below="@+id/taf_forecast"
-        android:layout_marginBottom="1dp"
-        android:layout_toEndOf="@+id/t1"
-        android:padding="5dp"
-        android:textColor="@color/black"
-        android:text="@string/rules"/>
+        <TextView
+            android:id="@+id/forecast_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/taf_forecast"
+            android:layout_marginBottom="1dp"
+            android:layout_toEndOf="@+id/t1"
+            android:background="#E2EDF2"
+            android:padding="5dp"
+            android:text="@string/type"
+            android:textColor="@color/black" />
 
-    <TextView
-        android:id="@+id/forecast_clouds"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#E2EDF2"
-        android:layout_below="@+id/taf_forecast"
-        android:layout_marginBottom="1dp"
-        android:layout_toEndOf="@+id/t1"
-        android:padding="5dp"
-        android:textColor="@color/black"
-        android:text="@string/other"/>
+        <TextView
+            android:id="@+id/forecast_flight_rules"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/taf_forecast"
+            android:layout_marginBottom="1dp"
+            android:layout_toEndOf="@+id/t1"
+            android:background="#E2EDF2"
+            android:padding="5dp"
+            android:text="@string/rules"
+            android:textColor="@color/black" />
 
-    <TextView
-        android:id="@+id/forecast_other"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#E2EDF2"
-        android:layout_below="@+id/taf_forecast"
-        android:layout_marginBottom="1dp"
-        android:layout_toEndOf="@+id/t1"
-        android:padding="5dp"
-        android:textColor="@color/black"
-        android:text="@string/other"/>
+        <TextView
+            android:id="@+id/forecast_clouds"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/taf_forecast"
+            android:layout_marginBottom="1dp"
+            android:layout_toEndOf="@+id/t1"
+            android:background="#E2EDF2"
+            android:padding="5dp"
+            android:text="@string/other"
+            android:textColor="@color/black" />
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/forecast_other"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/taf_forecast"
+            android:layout_marginBottom="1dp"
+            android:layout_toEndOf="@+id/t1"
+            android:background="#E2EDF2"
+            android:padding="5dp"
+            android:text="@string/other"
+            android:textColor="@color/black" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

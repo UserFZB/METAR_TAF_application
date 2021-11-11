@@ -5,8 +5,10 @@ package com.example.pojo_taf;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 
-public class EndTime {
+
+public class EndTime implements Serializable {
 
     @SerializedName("repr")
     @Expose
