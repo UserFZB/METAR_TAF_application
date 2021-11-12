@@ -19,6 +19,7 @@
         android:paddingLeft="10dp"
         android:hint="@string/search_hint"
         android:inputType="textCapCharacters"
+        android:imeOptions="actionNext"
         android:background="@drawable/rounded_corner"></EditText>
 
     <ImageButton

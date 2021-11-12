@@ -120,9 +120,9 @@ public class SearchActivity extends AppCompatActivity {
 
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if(actionId == EditorInfo.IME_ACTION_DONE)
+                if(actionId == EditorInfo.IME_ACTION_NEXT)
                 {
-                    submit.performClick();
+                    btn_add.performClick();
                     return true;
                 }
                 return false;
