@@ -25,7 +25,7 @@
     <string name="elevation">Elévation</string>
     <string name="latitude">Latitude</string>
     <string name="longitude">Longitude</string>
-    <string name="runways">Piste d\'attérrissage</string>
+    <string name="runways">Pistes</string>
     <string name="id">Id</string>
     <string name="length">Long.</string>
     <string name="width">Larg.</string>
@@ -55,4 +55,5 @@
     <string name="from">A partir de :</string>
     <string name="to">Jusqu\'à :</string>
     <string name="no_clouds">Pas de nuage</string>
+    <string name="more_info">Ressources sur internet</string>
 </resources>

@@ -441,7 +441,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_span="2"
-                        android:text="Plus d'infos sur le web"
+                        android:text="@string/more_info"
                         android:textColor="@color/alice_blue"
                         android:textSize="16dp"
                         android:textStyle="bold" />
