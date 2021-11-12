@@ -38,37 +38,50 @@
         android:src="@mipmap/plus"></ImageButton>
 
     <LinearLayout
-        android:id="@+id/container"
         android:layout_width="wrap_content"
-        android:layout_height="300dp"
+        android:layout_height="400dp"
         android:layout_below="@+id/text_search"
         android:layout_alignTop="@+id/text_search"
-        android:layout_centerInParent="true">
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
 
-        <ListView
-            android:id="@+id/list_search"
-            android:layout_width="250dp"
+        <LinearLayout
+            android:id="@+id/container"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:divider="@color/alice_blue"
-            android:dividerHeight="7dp"
-            android:background="#DBE7EE"
-            android:gravity="center">
-        </ListView>
+            android:layout_below="@+id/text_search"
+            android:layout_alignTop="@+id/text_search"
+            android:layout_gravity="center">
+
+            <ListView
+                android:id="@+id/list_search"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                android:divider="@color/alice_blue"
+                android:dividerHeight="7dp"
+                android:background="#DBE7EE"
+                android:gravity="center">
+            </ListView>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/container"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/rounded_corner2"
+            android:text="@string/button_search"
+            android:textColor="@color/alice_blue"
+            android:textSize="17dp"
+            android:layout_gravity="center"
+            android:visibility="invisible"/>
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/submit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/container"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/rounded_corner2"
-        android:text="@string/button_search"
-        android:textColor="@color/alice_blue"
-        android:textSize="17dp" />
 
 </RelativeLayout>

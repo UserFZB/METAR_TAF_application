@@ -8,6 +8,7 @@ import androidx.core.content.ContextCompat;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.DataSetObserver;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -115,6 +116,17 @@ public class SearchActivity extends AppCompatActivity {
 
 
         Button submit = findViewById(R.id.submit);
+
+        customAdapter.registerDataSetObserver(new DataSetObserver() {
+            @Override
+            public void onChanged() {
+                super.onChanged();
+                if(list_search.getAdapter().isEmpty())
+                    submit.setVisibility(View.INVISIBLE);
+                else
+                    submit.setVisibility(View.VISIBLE);
+            }
+        });
 
         text_search.setOnEditorActionListener(new TextView.OnEditorActionListener(){
 
