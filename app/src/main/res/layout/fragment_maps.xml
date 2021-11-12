@@ -27,8 +27,11 @@
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toStartOf="@+id/switch1"
             app:layout_constraintTop_toTopOf="@+id/map"
+            android:paddingRight="2dp"
             android:textColor="@color/alice_blue"
             android:textStyle="bold"
+            android:shadowColor="@color/lapis_lazuli"
+            android:shadowRadius="1"
             android:text="SATELLITE"/>
 
         <Switch
@@ -47,8 +50,11 @@
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toStartOf="@+id/switch1"
             app:layout_constraintTop_toTopOf="@+id/map"
+            android:paddingLeft="1dp"
             android:textColor="@color/alice_blue"
             android:textStyle="bold"
+            android:shadowColor="@color/lapis_lazuli"
+            android:shadowRadius="1"
             android:text="VUE 3D"/>
 
     </LinearLayout>
