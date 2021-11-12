@@ -22,6 +22,7 @@
     <string name="ICAO">OACI</string>
     <string name="city">Ville</string>
     <string name="country">Pays</string>
+    <string name="sts_type">Type</string>
     <string name="elevation">Elévation</string>
     <string name="latitude">Latitude</string>
     <string name="longitude">Longitude</string>

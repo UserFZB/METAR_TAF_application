@@ -71,6 +71,7 @@ public class StationFragment extends Fragment {
         TextView icao = result.findViewById(R.id.airport_icao);
         TextView city = result.findViewById(R.id.airport_city);
         TextView country = result.findViewById(R.id.airport_country);
+        TextView type = result.findViewById(R.id.airport_type);
         TextView elev_ft = result.findViewById(R.id.airport_elevation_ft);
         TextView elev_m = result.findViewById(R.id.airport_elevation_m);
         TextView lat = result.findViewById(R.id.airport_latitude);
@@ -86,6 +87,7 @@ public class StationFragment extends Fragment {
         icao.setText(station.getIcao());
         city.setText(station.getCity());
         country.setText(station.getCountry());
+        type.setText(station.getType());
         elev_ft.setText(station.getElevationFt().toString()+" ft");
         elev_m.setText(station.getElevationM().toString()+" m");
         lat.setText(station.getLatitude().toString());
